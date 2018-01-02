@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.social.bgram">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_logoapp"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_logoapp"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.social.bgram.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.social.bgram.Search.SearchActivity"></activity>
+        <activity android:name="com.social.bgram.Add.AddActivity"></activity>
+        <activity android:name="com.social.bgram.Notification.NotificationActivity"></activity>
+        <activity android:name="com.social.bgram.Profile.ProfileActivity"></activity>
+        <activity android:name="com.social.bgram.Profile.AccountSettingActivity"></activity>
+        <activity android:name="com.social.bgram.Home.MainActivity"></activity>
+
+    </application>
+
+</manifest>
