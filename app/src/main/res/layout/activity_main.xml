@@ -31,7 +31,7 @@
     </RelativeLayout>
 
     <!--bottom Navigation -->
-    <include layout="@layout/layout_bottom_navigation_view"/>
+   <!--<include layout="@layout/layout_bottom_navigation_view"/>-->
 
 </RelativeLayout>
 
