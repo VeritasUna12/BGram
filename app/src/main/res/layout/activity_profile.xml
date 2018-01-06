@@ -11,8 +11,6 @@
         <!--content of profulr layout -->
         <include layout="@layout/layout_center_profile"/>
 
-        <!--bottom Navigation -->
-        <!--<include layout="@layout/layout_bottom_navigation_view"/>-->
 
        <ProgressBar
             android:layout_width="150dp"

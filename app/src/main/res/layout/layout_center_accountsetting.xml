@@ -14,7 +14,7 @@
             android:id="@+id/txtSetting"
             android:text="Account Settings"
             android:textSize="35dp"
-            android:textColor="@color/black"
+            android:textColor="@color/green"
             android:background="@drawable/grey_border_bottom"/>
 
 

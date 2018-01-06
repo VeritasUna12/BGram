@@ -10,7 +10,8 @@
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/profileToolBar">
+            android:id="@+id/profileToolBar"
+            android:background="@color/green">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -32,7 +33,7 @@
                     android:layout_centerVertical="true"
                     android:text="Options"
                     android:textSize="20sp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:layout_marginLeft="5dp"
                     android:id="@+id/profileName"/>
 
