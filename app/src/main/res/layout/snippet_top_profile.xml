@@ -112,7 +112,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:textAlignment="center"
-                android:background="@drawable/grey_border"/>
+                android:background="@drawable/green_border"/>
         </LinearLayout>
 
 </RelativeLayout>
