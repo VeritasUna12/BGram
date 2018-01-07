@@ -19,7 +19,7 @@
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/logo"
+            android:src="@drawable/logoapp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="25dp"/>-->
 
