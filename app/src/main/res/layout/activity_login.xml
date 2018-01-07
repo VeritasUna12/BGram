@@ -12,7 +12,7 @@
         android:paddingLeft="25dp"
         android:paddingRight="25dp">
 
-        <ImageView
+        <!--<ImageView
             style=""
             android:layout_width="match_parent"
             android:layout_height="200dp"
@@ -21,12 +21,12 @@
             android:scaleType="fitCenter"
             android:src="@drawable/logo"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="25dp"/>
+            android:layout_marginBottom="25dp"/>-->
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="200dp"
             android:layout_marginBottom="8dp">
 
             <EditText
@@ -35,14 +35,15 @@
                 android:layout_height="wrap_content"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:textColorLink="@color/green" />
+                android:textColorLink="@color/green"
+                android:color="#E3FCF9"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="40dp">
 
             <EditText
                 android:id="@+id/input_password"
@@ -50,7 +51,8 @@
                 android:layout_height="wrap_content"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:textColorLink="@color/green" />
+                android:textColorLink="@color/green"
+                android:color="#E3FCF9"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.v7.widget.AppCompatButton
@@ -59,11 +61,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
-            android:background="@drawable/green_border"
+            android:background="@drawable/rounded_button"
             android:padding="12dp"
             android:text="Login"
             android:textColor="@color/green"
-            android:textColorLink="#008A90"
             android:textStyle="bold" />
 
         <TextView
@@ -72,11 +73,10 @@
             android:layout_marginBottom="25dp"
             android:textSize="16dp"
             android:layout_gravity="center"
-            android:text="No account yet, Create one!"
+            android:text="No account yet, Create one !"
             android:textAlignment="center"
             android:textColor="@color/links"
             />
-
 
     </LinearLayout>
     <!--<ProgressBar
