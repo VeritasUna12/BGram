@@ -41,9 +41,11 @@ dependencies {
 
     compile 'com.github.hitomis:CircleMenu:v1.0.2'
 
+    //firebase authentication
+    compile 'com.google.firebase:firebase-auth:10.2.6'
+
 
 }
-
 
 // Add firebase database
 apply plugin: 'com.google.gms.google-services'

@@ -23,6 +23,8 @@
         <activity android:name="com.social.bgram.Profile.ProfileActivity"></activity>
         <activity android:name="com.social.bgram.Profile.AccountSettingActivity"></activity>
         <activity android:name="com.social.bgram.Home.MainActivity"></activity>
+        <activity android:name="com.social.bgram.Login.LoginActivity"></activity>
+        <activity android:name="com.social.bgram.Login.RegisterActivity"></activity>
 
     </application>
 
