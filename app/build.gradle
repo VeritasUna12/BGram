@@ -43,3 +43,7 @@ dependencies {
 
 
 }
+
+
+// Add firebase database
+apply plugin: 'com.google.gms.google-services'

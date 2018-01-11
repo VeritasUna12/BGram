@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "390887524957",
+    "firebase_url": "https://socailappaden2017.firebaseio.com",
+    "project_id": "socailappaden2017",
+    "storage_bucket": "socailappaden2017.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390887524957:android:fef11090ee842a0f",
+        "android_client_info": {
+          "package_name": "com.social.bgram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390887524957-8nnqbefshlq1sc6m36km6q84qppp5imd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.social.bgram",
+            "certificate_hash": "af596f05aa00157d2208b2e04abd17c325eda7ac"
+          }
+        },
+        {
+          "client_id": "390887524957-r6s48qdic3ro5ljcd6flcf6hbbd58vna.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCmGxMS5MeDoBF0DB83xp3INmIfgkgx5k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "390887524957-r6s48qdic3ro5ljcd6flcf6hbbd58vna.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
