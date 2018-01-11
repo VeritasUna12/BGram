@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_camera);
-        tabLayout.getTabAt(1).setIcon(R.drawable.logo);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_logo);
         tabLayout.getTabAt(2).setIcon(R.drawable.ic_send);
 
     }
@@ -96,10 +96,10 @@ public class MainActivity extends AppCompatActivity {
         ImageView notificationIcon  = new ImageView(this);
 
         homeIcon            .setImageDrawable( ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_home) );
-        searchIcon          .setImageDrawable( ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_search) );
-        addIcon             .setImageDrawable( ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_add) );
-        notificationIcon    .setImageDrawable( ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_notification) );
         profileIcon         .setImageDrawable( ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_profile) );
+        notificationIcon    .setImageDrawable( ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_notification) );
+        addIcon             .setImageDrawable( ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_add) );
+        searchIcon          .setImageDrawable( ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_search) );
 
         SubActionButton homeButton = itemBuilder.setContentView(homeIcon).build();
         SubActionButton searchButton = itemBuilder.setContentView(searchIcon).build();
@@ -107,13 +107,13 @@ public class MainActivity extends AppCompatActivity {
         SubActionButton profileButton = itemBuilder.setContentView(profileIcon).build();
         SubActionButton notificationButton = itemBuilder.setContentView(notificationIcon).build();
 
-
+        //show icons in Floating Action Menu
         final FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(this)
-                .addSubActionView(homeButton)
-                .addSubActionView(searchButton)
-                .addSubActionView(addButton)
                 .addSubActionView(profileButton)
                 .addSubActionView(notificationButton)
+                .addSubActionView(addButton)
+                .addSubActionView(searchButton)
+                .addSubActionView(homeButton)
                 // ...
                 .attachTo(actionButton)
                 .build();
