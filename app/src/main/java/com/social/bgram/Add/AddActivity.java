@@ -75,16 +75,16 @@ public class AddActivity extends AppCompatActivity {
         SubActionButton notificationButton = itemBuilder.setContentView(notificationIcon).build();
 
 
+        //show icons in Floating Action Menu
         final FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(this)
-                .addSubActionView(homeButton)
-                .addSubActionView(searchButton)
-                .addSubActionView(addButton)
                 .addSubActionView(profileButton)
                 .addSubActionView(notificationButton)
+                .addSubActionView(addButton)
+                .addSubActionView(searchButton)
+                .addSubActionView(homeButton)
                 // ...
                 .attachTo(actionButton)
                 .build();
-
         actionMenu.setStateChangeListener(new FloatingActionMenu.MenuStateChangeListener() {
             @Override
             public void onMenuOpened(FloatingActionMenu floatingActionMenu) {
