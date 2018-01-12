@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
@@ -32,6 +33,7 @@ import com.social.bgram.Search.SearchActivity;
 import com.social.bgram.Utils.BottomNavigationViewHelper;
 import com.social.bgram.Utils.SectionPagerAdapter;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+import com.social.bgram.Utils.UniversalImageLoader;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -54,10 +56,13 @@ public class MainActivity extends AppCompatActivity {
         setupFirebaseAuth();
         setUpBottomNavigationView();
         setupViewPager();
+        initImageLoader();
     }
 
-
-
+    private void initImageLoader(){
+        UniversalImageLoader universalImageLoader = new UniversalImageLoader(mContext);
+        ImageLoader.getInstance().init(universalImageLoader.getConfig());
+    }
 
     // to Add 3 Tabs Camera , Home and Messeges in Home Activity
     private void setupViewPager()

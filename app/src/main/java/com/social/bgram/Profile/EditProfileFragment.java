@@ -27,19 +27,25 @@ public class EditProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_edit_profile, container, false);
         mProfilePhoto = (ImageView) view.findViewById(R.id.profile_photo);
-        initImageLoader();
+
         setProfileImage();
 
+        //Back arrow
+        ImageView backArrow = (ImageView) view.findViewById(R.id.backArrow);
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: navigating back to profileActivity");
+                getActivity().finish();
+            }
+        });
         return view;
     }
-    private void initImageLoader(){
-        UniversalImageLoader universalImageLoader = new UniversalImageLoader(getActivity());
-        ImageLoader.getInstance().init(universalImageLoader.getConfig());
-    }
+
     private void setProfileImage(){
         Log.d(TAG, "setProfileImage: setting profile image.");
-        String imgURL = "https://www.websolutionsz.com/wp-content/uploads/2017/06/android_app.png";
-        UniversalImageLoader.setImage(imgURL,mProfilePhoto,null,"");
+        String imgURL = "www.websolutionsz.com/wp-content/uploads/2017/06/android_app.png";
+        UniversalImageLoader.setImage(imgURL,mProfilePhoto,null,"https://");
     }
 }
 
