@@ -9,8 +9,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -22,8 +20,6 @@ import com.social.bgram.Notification.NotificationActivity;
 import com.social.bgram.Profile.ProfileActivity;
 import com.social.bgram.R;
 import com.social.bgram.Search.SearchActivity;
-import com.social.bgram.Utils.BottomNavigationViewHelper;
-import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 /**
  * Created by user on 12/10/2017.

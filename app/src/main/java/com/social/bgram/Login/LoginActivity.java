@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
 
-    //firebase
+    // Declare an instance of firebase
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -61,7 +61,8 @@ public class LoginActivity extends AppCompatActivity {
             return false;
         }
     }
- /*
+
+     /*
      ************************************ Firebase DataBase ****************************************
      */
 
@@ -99,20 +100,13 @@ public class LoginActivity extends AppCompatActivity {
 
                                 Toast.makeText(LoginActivity.this, getString(R.string.auth_failed),
                                         Toast.LENGTH_SHORT).show();
-                                /*mProgressBar.setVisibility(View.GONE);
-                                mPleaseWait.setVisibility(View.GONE);*/
                             }
                             else{
                                 Log.w(TAG, "signInWithEmail:failed", task.getException());
 
                                 Toast.makeText(LoginActivity.this, getString(R.string.auth_success),
                                         Toast.LENGTH_SHORT).show();
-
-                                /*mProgressBar.setVisibility(View.GONE);
-                                mPleaseWait.setVisibility(View.GONE);*/
                             }
-
-                            // ...
                         }
                     });
         }
@@ -120,24 +114,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 });
 
-     /*   TextView linkSignUp = (TextView) findViewById(R.id.link_signup);
-        linkSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onClick: navigating to register screen");
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
-
-         *//*
-         If the user is logged in then navigate to HomeActivity and call 'finish()'
-          *//*
-        if(mAuth.getCurrentUser() != null){
-            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-            startActivity(intent);
-            finish();
-        }*/
 
         TextView linkSignUp = (TextView) findViewById(R.id.link_signup);
         linkSignUp.setOnClickListener(new View.OnClickListener() {
@@ -197,4 +173,8 @@ public class LoginActivity extends AppCompatActivity {
             mAuth.removeAuthStateListener(mAuthListener);
         }
     }
+
+    /*
+     ***********************************************************************************************
+     */
     }

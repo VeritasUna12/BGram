@@ -23,6 +23,7 @@ import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 import com.social.bgram.Add.AddActivity;
+import com.social.bgram.Login.LoginActivity;
 import com.social.bgram.Notification.NotificationActivity;
 import com.social.bgram.Profile.ProfileActivity;
 import com.social.bgram.R;
@@ -76,6 +77,74 @@ public class HomeActivity extends AppCompatActivity {
         tabLayout.getTabAt(2).setIcon(R.drawable.ic_send);
 
     }
+
+
+
+     /*
+     ************************************ Firebase DataBase ****************************************
+     */
+
+
+    //checks to see if the 'user' is logged in
+
+    private void checkCurrentUser(FirebaseUser user){
+        Log.d(TAG, "checkCurrentUser: checking if user is logged in.");
+
+         if(user == null){
+            Intent intent = new Intent(mContext, LoginActivity.class);
+            startActivity(intent);
+         }
+    }
+
+     // Setup the firebase auth object
+
+    private void setupFirebaseAuth(){
+
+        //initialize the FirebaseAuth Object.
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+
+                // check if the user is logged in
+                 checkCurrentUser(user);
+
+                if (user != null) {
+                    // User is signed in
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                } else {
+                    // User is signed out
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                }
+                // ...
+            }
+        };
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+        checkCurrentUser(mAuth.getCurrentUser());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+
+    /*
+     ***********************************************************************************************
+     */
+
+    /*
+     *********************************** Floating Action Menu **************************************
+     */
 
     // BottomNavigationView Setup
     private void setUpBottomNavigationView() {
@@ -186,63 +255,8 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-
-     /*
-     ************************************ Firebase DataBase ****************************************
+    /*
+     ***********************************************************************************************
      */
 
-
-    //checks to see if the @param 'user' is logged in
-
-    private void checkCurrentUser(FirebaseUser user){
-        Log.d(TAG, "checkCurrentUser: checking if user is logged in.");
-
-//        if(user == null){
-//            Intent intent = new Intent(mContext, LoginActivity.class);
-//            startActivity(intent);
-//        }
-    }
-
-     // Setup the firebase auth object
-
-    private void setupFirebaseAuth(){
-
-        //initialize the FirebaseAuth Object.
-        mAuth = FirebaseAuth.getInstance();
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-
-                // check if the user is logged in
-                 checkCurrentUser(user);
-
-                if (user != null) {
-                    // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                } else {
-                    // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
-                }
-                // ...
-            }
-        };
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
-        /*mViewPager.setCurrentItem(HOME_FRAGMENT);*/
-        checkCurrentUser(mAuth.getCurrentUser());
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (mAuthListener != null) {
-            mAuth.removeAuthStateListener(mAuthListener);
-        }
-    }
 }
