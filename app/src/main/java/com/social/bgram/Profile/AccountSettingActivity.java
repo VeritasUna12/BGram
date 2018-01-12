@@ -22,7 +22,7 @@ import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 import com.social.bgram.Add.AddActivity;
-import com.social.bgram.Home.MainActivity;
+import com.social.bgram.Home.HomeActivity;
 import com.social.bgram.Notification.NotificationActivity;
 import com.social.bgram.R;
 import com.social.bgram.Search.SearchActivity;
@@ -135,7 +135,7 @@ public class AccountSettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "HOME", Toast.LENGTH_SHORT).show();
-                Intent hometnt = new Intent(mContext, MainActivity.class);
+                Intent hometnt = new Intent(mContext, HomeActivity.class);
                 startActivity(hometnt);
                 finish();
             }

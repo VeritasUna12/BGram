@@ -12,8 +12,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -25,21 +23,18 @@ import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 import com.social.bgram.Add.AddActivity;
-import com.social.bgram.Login.LoginActivity;
 import com.social.bgram.Notification.NotificationActivity;
 import com.social.bgram.Profile.ProfileActivity;
 import com.social.bgram.R;
 import com.social.bgram.Search.SearchActivity;
-import com.social.bgram.Utils.BottomNavigationViewHelper;
 import com.social.bgram.Utils.SectionPagerAdapter;
-import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.social.bgram.Utils.UniversalImageLoader;
 
-public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
+public class HomeActivity extends AppCompatActivity {
+    private static final String TAG = "HomeActivity";
     private static final int  ACTIVITY_NO =0 ;
 
-    private Context mContext= MainActivity.this;
+    private Context mContext= HomeActivity.this;
 
     //firebase : Declare an instance of FirebaseAuth
     private FirebaseAuth mAuth;
@@ -144,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "HOME", Toast.LENGTH_SHORT).show();
-                Intent hometnt = new Intent(mContext, MainActivity.class);
+                Intent hometnt = new Intent(mContext, HomeActivity.class);
                 startActivity(hometnt);
                 finish();
             }

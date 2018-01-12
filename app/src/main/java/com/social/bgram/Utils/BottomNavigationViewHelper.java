@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.social.bgram.Add.AddActivity;
-import com.social.bgram.Home.MainActivity;
+import com.social.bgram.Home.HomeActivity;
 import com.social.bgram.Notification.NotificationActivity;
 import com.social.bgram.Profile.ProfileActivity;
 import com.social.bgram.R;
@@ -38,7 +38,7 @@ public class BottomNavigationViewHelper {
 
                 switch (item.getItemId()) {
                     case R.id.ic_home:
-                        Intent intent1= new Intent(context, MainActivity.class); //ACTIVITY_NO =0
+                        Intent intent1= new Intent(context, HomeActivity.class); //ACTIVITY_NO =0
                         context.startActivity(intent1);
                         break;
                     case R.id.ic_search:
