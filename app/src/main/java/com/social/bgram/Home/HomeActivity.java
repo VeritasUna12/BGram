@@ -1,6 +1,5 @@
 package com.social.bgram.Home;
 
-//import com.example.instagram.Home.HomeFragment;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
@@ -41,8 +40,6 @@ public class HomeActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,15 +75,11 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-
-
      /*
      ************************************ Firebase DataBase ****************************************
      */
 
-
     //checks to see if the 'user' is logged in
-
     private void checkCurrentUser(FirebaseUser user){
         Log.d(TAG, "checkCurrentUser: checking if user is logged in.");
 
@@ -97,7 +90,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
      // Setup the firebase auth object
-
     private void setupFirebaseAuth(){
 
         //initialize the FirebaseAuth Object.

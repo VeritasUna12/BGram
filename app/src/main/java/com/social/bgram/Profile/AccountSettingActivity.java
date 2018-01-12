@@ -60,8 +60,6 @@ public class AccountSettingActivity extends AppCompatActivity {
         setupFragments();    // implement Fragments
 
 
-
-
         //setup the backarrow for navigating back to "ProfileActivity"
         ImageView backArrow = (ImageView) findViewById(R.id.backArrow);
         backArrow.setOnClickListener(new View.OnClickListener() {
@@ -73,11 +71,56 @@ public class AccountSettingActivity extends AppCompatActivity {
         });
     }
 
+    // setupFragments
+    private void setupFragments() {
+        pagerAdapter = new SectionStatePagerAadpter(getSupportFragmentManager());
+        pagerAdapter.addFragment(new EditProfileFragment(), getString(R.string.edit_profile_fragment)); //fragment 0
+        pagerAdapter.addFragment(new SignOutFragment(), getString(R.string.sign_out_fragment)); //fragment 1
+    }
+
+    private void setViewPager(int fragmentNumber) {
+        mRelativeLayout.setVisibility(View.GONE);
+        Log.d(TAG, "setViewPager: navigating to fragment #: " + fragmentNumber);
+        mViewPager.setAdapter(pagerAdapter);
+        mViewPager.setCurrentItem(fragmentNumber);
+    }
+
+
+    // setupSettingsList with display item in list view by array adapter
+    private void setupSettingsList() {
+        Log.d(TAG, "setupSettingsList: initializing 'Account Settings' list.");
+        ListView listView = (ListView) findViewById(R.id.lvAccountSetting);
+
+        ArrayList<String> options = new ArrayList<>();
+        options.add(getString(R.string.edit_profile_fragment)); //fragment 0
+        options.add(getString(R.string.sign_out_fragment)); //fragement 1
+
+        ArrayAdapter adapter = new ArrayAdapter(mContext, android.R.layout.simple_list_item_1, options);
+        listView.setAdapter(adapter);
+
+        // when clock on item in list view
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d(TAG, "onItemClick: navigating to fragment#: " + position);
+                setViewPager(position);
+            }
+        });
+
+    }
+     /*
+     ***********************************************************************************************
+     */
+
+    /*
+     *********************************** Floating Action Menu **************************************
+     */
+
     // BottomNavigationView Setup
     private void setUpBottomNavigationView() {
 
         final ImageView icon = new ImageView(this); // Create an icon
-        icon.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_launch_black_24dp));
+        icon.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_launch_black_24dp));
 
         final FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
                 .setContentView(icon)
@@ -85,17 +128,17 @@ public class AccountSettingActivity extends AppCompatActivity {
                 .build();
 
         SubActionButton.Builder itemBuilder = new SubActionButton.Builder(this);
-        ImageView homeIcon          = new ImageView(this);
-        ImageView searchIcon        = new ImageView(this);
-        ImageView addIcon           = new ImageView(this);
-        ImageView profileIcon       = new ImageView(this);
-        ImageView notificationIcon  = new ImageView(this);
+        ImageView homeIcon = new ImageView(this);
+        ImageView searchIcon = new ImageView(this);
+        ImageView addIcon = new ImageView(this);
+        ImageView profileIcon = new ImageView(this);
+        ImageView notificationIcon = new ImageView(this);
 
-        homeIcon            .setImageDrawable( ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_home) );
-        profileIcon         .setImageDrawable( ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_profile) );
-        notificationIcon    .setImageDrawable( ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_notification) );
-        addIcon             .setImageDrawable( ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_add) );
-        searchIcon          .setImageDrawable( ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_search) );
+        homeIcon.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_home));
+        profileIcon.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_profile));
+        notificationIcon.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_notification));
+        addIcon.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_add));
+        searchIcon.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_search));
 
         SubActionButton homeButton = itemBuilder.setContentView(homeIcon).build();
         SubActionButton searchButton = itemBuilder.setContentView(searchIcon).build();
@@ -118,7 +161,7 @@ public class AccountSettingActivity extends AppCompatActivity {
             @Override
             public void onMenuOpened(FloatingActionMenu floatingActionMenu) {
                 icon.setRotation(0);
-                PropertyValuesHolder pvhr = PropertyValuesHolder.ofFloat(View.ROTATION,45);
+                PropertyValuesHolder pvhr = PropertyValuesHolder.ofFloat(View.ROTATION, 45);
                 ObjectAnimator animation = ObjectAnimator.ofPropertyValuesHolder(icon, pvhr);
                 animation.start();
             }
@@ -126,7 +169,7 @@ public class AccountSettingActivity extends AppCompatActivity {
             @Override
             public void onMenuClosed(FloatingActionMenu floatingActionMenu) {
                 icon.setRotation(45);
-                PropertyValuesHolder pvhr = PropertyValuesHolder.ofFloat(View.ROTATION,0);
+                PropertyValuesHolder pvhr = PropertyValuesHolder.ofFloat(View.ROTATION, 0);
                 ObjectAnimator animation = ObjectAnimator.ofPropertyValuesHolder(icon, pvhr);
                 animation.start();
             }
@@ -182,52 +225,7 @@ public class AccountSettingActivity extends AppCompatActivity {
         });
     }
 
-
-    // setupFragments
-    private void setupFragments(){
-        pagerAdapter = new SectionStatePagerAadpter(getSupportFragmentManager());
-        pagerAdapter.addFragment(new EditProfileFragment(), getString(R.string.edit_profile_fragment)); //fragment 0
-        pagerAdapter.addFragment(new SignOutFragment(), getString(R.string.sign_out_fragment)); //fragment 1
-    }
-
-    private void setViewPager(int fragmentNumber){
-        mRelativeLayout.setVisibility(View.GONE);
-        Log.d(TAG, "setViewPager: navigating to fragment #: " + fragmentNumber);
-        mViewPager.setAdapter(pagerAdapter);
-        mViewPager.setCurrentItem(fragmentNumber);
-    }
-
-
-
-     // setupSettingsList with display item in list view by array adapter
-    private void setupSettingsList(){
-        Log.d(TAG, "setupSettingsList: initializing 'Account Settings' list.");
-        ListView listView = (ListView) findViewById(R.id.lvAccountSetting);
-
-        ArrayList<String> options = new ArrayList<>();
-        options.add(getString(R.string.edit_profile_fragment)); //fragment 0
-        options.add(getString(R.string.sign_out_fragment)); //fragement 1
-
-        ArrayAdapter adapter = new ArrayAdapter(mContext, android.R.layout.simple_list_item_1, options);
-        listView.setAdapter(adapter);
-
-    // when clock on item in list view
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d(TAG, "onItemClick: navigating to fragment#: " + position);
-                setViewPager(position);
-            }
-        });
-
-    }
+    /*
+     ***********************************************************************************************
+     */
 }
-
-
-    //listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-         //   @Override
-         //   public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-         //       Log.d(TAG, "onItemClick: navigating to fragment#: " + position);
-          //      setViewPager(position);
-          //  }
-        //});

@@ -9,10 +9,6 @@ import android.view.ViewGroup;
 
 import com.social.bgram.R;
 
-/**
- * Created by user on 12/11/2017.
- */
-
 public class CameraFragment extends Fragment {
     private static final String TAG = "CameraFragment";
 

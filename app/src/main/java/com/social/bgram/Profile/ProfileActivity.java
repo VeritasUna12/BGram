@@ -24,10 +24,6 @@ import com.social.bgram.Notification.NotificationActivity;
 import com.social.bgram.R;
 import com.social.bgram.Search.SearchActivity;
 
-/**
- * Created by user on  12/10/2017.
- */
-
 public class ProfileActivity extends AppCompatActivity {
     private static final String TAG = "ProfileActivity";
     private static final int  ACTIVITY_NO =4 ;
@@ -64,20 +60,15 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        //toolbar.setOnMenuItemClickListener (new Toolbar.OnMenuItemClickListener() {
-         //   @Override
-           // public boolean onMenuItemClick(MenuItem item) {
-
-//                Log.d(TAG, "onMenuItemClick: clicked menu item: " + item);
-
-//                switch (item.getItemId()) {
-  //                  case R.id.profileMenu:
-    //                    Log.d(TAG, "onMenuItemClick: Navigating to Profile Preferences. ");
-        //        }
-      //          return false;
-          //  }
-        //});
     }
+
+   /*
+     ***********************************************************************************************
+     */
+
+    /*
+     *********************************** Floating Action Menu **************************************
+     */
 
     // BottomNavigationView Setup
     private void setUpBottomNavigationView() {
@@ -98,17 +89,16 @@ public class ProfileActivity extends AppCompatActivity {
         ImageView notificationIcon  = new ImageView(this);
 
         homeIcon            .setImageDrawable( ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_home) );
-        searchIcon          .setImageDrawable( ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_search) );
-        addIcon             .setImageDrawable( ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_add) );
-        notificationIcon    .setImageDrawable( ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_notification) );
         profileIcon         .setImageDrawable( ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_profile) );
+        notificationIcon    .setImageDrawable( ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_notification) );
+        addIcon             .setImageDrawable( ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_add) );
+        searchIcon          .setImageDrawable( ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_search) );
 
         SubActionButton homeButton = itemBuilder.setContentView(homeIcon).build();
         SubActionButton searchButton = itemBuilder.setContentView(searchIcon).build();
         SubActionButton addButton = itemBuilder.setContentView(addIcon).build();
         SubActionButton profileButton = itemBuilder.setContentView(profileIcon).build();
         SubActionButton notificationButton = itemBuilder.setContentView(notificationIcon).build();
-
 
         //show icons in Floating Action Menu
         final FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(this)
@@ -189,5 +179,8 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
+    /*
+     ***********************************************************************************************
+     */
 
 }

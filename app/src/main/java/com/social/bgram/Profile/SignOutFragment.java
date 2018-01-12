@@ -9,10 +9,6 @@ import android.view.ViewGroup;
 
 import com.social.bgram.R;
 
-/**
- * Created by AhmedRashad on 12/23/2017.
- */
-
 public class SignOutFragment extends Fragment {
 
     private static final String TAG = "SignOutFragment";

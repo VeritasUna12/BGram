@@ -13,10 +13,6 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.social.bgram.R;
 import com.social.bgram.Utils.UniversalImageLoader;
 
-/**
- * Created by AhmedRashad on 12/23/2017.
- */
-
 public class EditProfileFragment extends Fragment {
 
     private static final String TAG = "EditProfileFragment";
