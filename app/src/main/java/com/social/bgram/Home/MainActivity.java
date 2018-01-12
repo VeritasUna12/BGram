@@ -234,8 +234,8 @@ public class MainActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
-        /*mViewPager.setCurrentItem(HOME_FRAGMENT);
-        checkCurrentUser(mAuth.getCurrentUser());*/
+        /*mViewPager.setCurrentItem(HOME_FRAGMENT);*/
+        checkCurrentUser(mAuth.getCurrentUser());
     }
 
     @Override
