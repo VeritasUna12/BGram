@@ -68,12 +68,13 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/link_signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
             android:textSize="16dp"
             android:layout_gravity="center"
-            android:text="No account yet, Create one !"
+            android:text="No account yet, SginUp Now "
             android:textAlignment="center"
             android:textColor="@color/links"
             />

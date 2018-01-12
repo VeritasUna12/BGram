@@ -74,51 +74,53 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: attempting to log in.");
+        Log.d(TAG, "onClick: attempting to log in.");
 
-                String email = mEmail.getText().toString();
-                String password = mPassword.getText().toString();
+        String email = mEmail.getText().toString();
+        String password = mPassword.getText().toString();
 
-                if(isStringNull(email) && isStringNull(password)){
-                    Toast.makeText(mContext, "You must fill out all the fields", Toast.LENGTH_SHORT).show();
-                }else{
+        if(isStringNull(email) && isStringNull(password)){
+            Toast.makeText(mContext, "You must fill out all the fields", Toast.LENGTH_SHORT).show();
+        }else{
 
-                    //Create a new signIn method which takes in an email address and password, validates them, and then signs a user in with the signInWithEmailAndPassword method.
-                    mAuth.signInWithEmailAndPassword(email, password)
-                            .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
-                                    FirebaseUser user = mAuth.getCurrentUser();
+            /* Create a new signIn method which takes in an email address and password,
+             validates them, and then signs a user in with the signInWithEmailAndPassword method.
+              */
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+                            FirebaseUser user = mAuth.getCurrentUser();
 
-                                    // If sign in fails, display a message to the user. If sign in succeeds
-                                    // the auth state listener will be notified and logic to handle the
-                                    // signed in user can be handled in the listener.
-                                    if (!task.isSuccessful()) {
-                                        Log.w(TAG, "signInWithEmail:failed", task.getException());
+                            // If sign in fails, display a message to the user. If sign in succeeds
+                            // the auth state listener will be notified and logic to handle the
+                            // signed in user can be handled in the listener.
+                            if (!task.isSuccessful()) {
+                                Log.w(TAG, "signInWithEmail:failed", task.getException());
 
-                                        Toast.makeText(LoginActivity.this, getString(R.string.auth_failed),
-                                                Toast.LENGTH_SHORT).show();
-                                        /*mProgressBar.setVisibility(View.GONE);
-                                        mPleaseWait.setVisibility(View.GONE);*/
-                                    }
-                                    else{
-                                        Log.w(TAG, "signInWithEmail:failed", task.getException());
+                                Toast.makeText(LoginActivity.this, getString(R.string.auth_failed),
+                                        Toast.LENGTH_SHORT).show();
+                                /*mProgressBar.setVisibility(View.GONE);
+                                mPleaseWait.setVisibility(View.GONE);*/
+                            }
+                            else{
+                                Log.w(TAG, "signInWithEmail:failed", task.getException());
 
-                                        Toast.makeText(LoginActivity.this, getString(R.string.auth_success),
-                                                Toast.LENGTH_SHORT).show();
-                                        /*Snackbar.make(activity_login,"Successfully signed in.Welcome!", Snackbar.LENGTH_SHORT).show();*/
-                                        /*mProgressBar.setVisibility(View.GONE);
-                                        mPleaseWait.setVisibility(View.GONE);*/
-                                    }
+                                Toast.makeText(LoginActivity.this, getString(R.string.auth_success),
+                                        Toast.LENGTH_SHORT).show();
 
-                                    // ...
-                                }
-                            });
-                }
+                                /*mProgressBar.setVisibility(View.GONE);
+                                mPleaseWait.setVisibility(View.GONE);*/
+                            }
 
-            }
-        });
+                            // ...
+                        }
+                    });
+        }
+
+    }
+});
 
      /*   TextView linkSignUp = (TextView) findViewById(R.id.link_signup);
         linkSignUp.setOnClickListener(new View.OnClickListener() {
@@ -138,7 +140,27 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }*/
+
+        TextView linkSignUp = (TextView) findViewById(R.id.link_signup);
+        linkSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: navigating to register screen");
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        //If the user is logged in then navigate to HomeActivity and call 'finish()'
+
+        if(mAuth.getCurrentUser() != null){
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
+
 
     // Setup the firebase auth object
 
