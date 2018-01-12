@@ -17,10 +17,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.social.bgram.R;
 import com.social.bgram.Utils.FirebaseMethods;
 
-/**
- * Created by Ahmed R. Abdo on 1/12/2018.
- */
-
 public class RegisterActivity extends AppCompatActivity {
 
     private static final String TAG = "RegisterActivity";
@@ -145,5 +141,6 @@ public class RegisterActivity extends AppCompatActivity {
     /*
      ***********************************************************************************************
      */
+
 }
 

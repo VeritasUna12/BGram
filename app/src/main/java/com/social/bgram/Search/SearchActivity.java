@@ -22,10 +22,6 @@ import com.social.bgram.Notification.NotificationActivity;
 import com.social.bgram.Profile.ProfileActivity;
 import com.social.bgram.R;
 
-/**
- * Created by user on 12/10/2017.
- */
-
 public class SearchActivity extends AppCompatActivity {
     private static final String TAG = "SearchActivity";
 

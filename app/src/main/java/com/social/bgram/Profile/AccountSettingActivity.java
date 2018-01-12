@@ -30,10 +30,6 @@ import com.social.bgram.Utils.SectionStatePagerAadpter;
 
 import java.util.ArrayList;
 
-/**
- * Created by user on 12/22/2017.
- */
-
 public class AccountSettingActivity extends AppCompatActivity {
 
     private static final String TAG = "AccountSettingActivity";
@@ -228,4 +224,5 @@ public class AccountSettingActivity extends AppCompatActivity {
     /*
      ***********************************************************************************************
      */
+
 }

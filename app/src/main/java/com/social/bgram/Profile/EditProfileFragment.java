@@ -43,6 +43,11 @@ public class EditProfileFragment extends Fragment {
         String imgURL = "www.websolutionsz.com/wp-content/uploads/2017/06/android_app.png";
         UniversalImageLoader.setImage(imgURL,mProfilePhoto,null,"https://");
     }
+
+    /*
+     ***********************************************************************************************
+     */
+
 }
 
 

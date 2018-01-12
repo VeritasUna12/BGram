@@ -22,10 +22,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.social.bgram.Home.HomeActivity;
 import com.social.bgram.R;
 
-/**
- * Created by Ahmed R. Abdo on 1/12/2018.
- */
-
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
@@ -177,4 +173,5 @@ public class LoginActivity extends AppCompatActivity {
     /*
      ***********************************************************************************************
      */
-    }
+
+}
