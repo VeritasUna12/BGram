@@ -17,7 +17,7 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.social.bgram.R;
 
 /**
- * Created by mubarak on 1/12/2018.
+ * Created by Ahmed R. Abdo on 1/12/2018.
  */
 
 public class UniversalImageLoader {

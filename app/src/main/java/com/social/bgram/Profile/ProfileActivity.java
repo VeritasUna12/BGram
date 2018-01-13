@@ -25,8 +25,8 @@ import com.social.bgram.R;
 import com.social.bgram.Search.SearchActivity;
 
 public class ProfileActivity extends AppCompatActivity {
+
     private static final String TAG = "ProfileActivity";
-    private static final int  ACTIVITY_NO =4 ;
 
     private Context mContext= ProfileActivity.this;
     private ProgressBar mProgressBar;

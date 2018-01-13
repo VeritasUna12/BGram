@@ -26,7 +26,7 @@ public class EditProfileFragment extends Fragment {
 
         setProfileImage();
 
-        //Back arrow
+        //Implement Back Arrow
         ImageView backArrow = (ImageView) view.findViewById(R.id.backArrow);
         backArrow.setOnClickListener(new View.OnClickListener() {
             @Override

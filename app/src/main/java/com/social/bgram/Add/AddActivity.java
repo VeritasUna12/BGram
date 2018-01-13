@@ -28,7 +28,6 @@ import com.social.bgram.Search.SearchActivity;
 
 public class AddActivity extends AppCompatActivity {
     private static final String TAG = "AddActivity";
-    private static final int  ACTIVITY_NO =2 ;
 
     private Context mContext= AddActivity.this;
 
@@ -42,6 +41,10 @@ public class AddActivity extends AppCompatActivity {
     }
  /*
      ***********************************************************************************************
+     */
+
+    /*
+     *********************************** Floating Action Menu **************************************
      */
 
     /*

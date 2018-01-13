@@ -22,9 +22,12 @@ import com.social.bgram.Profile.ProfileActivity;
 import com.social.bgram.R;
 import com.social.bgram.Search.SearchActivity;
 
+/**
+ * Created by user on 12/10/2017.
+ */
+
 public class NotificationActivity extends AppCompatActivity {
     private static final String TAG = "NotificationActivity";
-    private static final int  ACTIVITY_NO =3 ;
 
     private Context mContext= NotificationActivity.this;
 
@@ -36,10 +39,6 @@ public class NotificationActivity extends AppCompatActivity {
 
         setUpBottomNavigationView();
     }
-
- /*
-     ***********************************************************************************************
-     */
 
     /*
      *********************************** Floating Action Menu **************************************

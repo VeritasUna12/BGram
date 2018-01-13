@@ -32,11 +32,10 @@ import com.social.bgram.Utils.UniversalImageLoader;
 
 public class HomeActivity extends AppCompatActivity {
     private static final String TAG = "HomeActivity";
-    private static final int  ACTIVITY_NO =0 ;
 
     private Context mContext= HomeActivity.this;
 
-    //firebase : Declare an instance of FirebaseAuth
+    //firebase : Declare an instance of Firebase
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -52,6 +51,7 @@ public class HomeActivity extends AppCompatActivity {
         initImageLoader();
     }
 
+    // implement Universal image loader
     private void initImageLoader(){
         UniversalImageLoader universalImageLoader = new UniversalImageLoader(mContext);
         ImageLoader.getInstance().init(universalImageLoader.getConfig());
