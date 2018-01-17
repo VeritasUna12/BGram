@@ -69,20 +69,20 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-        Log.d(TAG, "onClick: attempting to log in.");
+            Log.d(TAG, "onClick: attempting to log in.");
+            String email = mEmail.getText().toString();
+            String password = mPassword.getText().toString();
 
-        String email = mEmail.getText().toString();
-        String password = mPassword.getText().toString();
-
-        if(isStringNull(email) && isStringNull(password)){
-            Toast.makeText(mContext, "You must fill out all the fields", Toast.LENGTH_SHORT).show();
-        }else{
+            if(isStringNull(email) && isStringNull(password)){
+                Toast.makeText(mContext, "You must fill out all the fields", Toast.LENGTH_SHORT).show();
+            }
+            else{
 
             /* Create a new signIn method which takes in an email address and password,
              validates them, and then signs a user in with the signInWithEmailAndPassword method.
               */
-            mAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                mAuth.signInWithEmailAndPassword(email, password)
+                                .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
@@ -102,6 +102,8 @@ public class LoginActivity extends AppCompatActivity {
 
                                 Toast.makeText(LoginActivity.this, getString(R.string.auth_success),
                                         Toast.LENGTH_SHORT).show();
+                                Intent intentHome = new Intent(mContext, HomeActivity.class);
+                                startActivity(intentHome);
                             }
                         }
                     });
