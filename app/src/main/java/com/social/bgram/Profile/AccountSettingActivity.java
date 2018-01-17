@@ -23,6 +23,7 @@ import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 import com.social.bgram.Add.AddActivity;
 import com.social.bgram.Home.HomeActivity;
+import com.social.bgram.Login.LoginActivity;
 import com.social.bgram.Notification.NotificationActivity;
 import com.social.bgram.R;
 import com.social.bgram.Search.SearchActivity;
@@ -35,6 +36,7 @@ public class AccountSettingActivity extends AppCompatActivity {
     private static final String TAG = "AccountSettingActivity";
     private Context mContext;
 
+    // Declar ViewPager and SectionStatePagerAadpter
     private SectionStatePagerAadpter pagerAdapter;
     private ViewPager mViewPager;
     private RelativeLayout mRelativeLayout;
@@ -51,9 +53,9 @@ public class AccountSettingActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mRelativeLayout = (RelativeLayout) findViewById(R.id.relLayout1);
 
-        setUpBottomNavigationView();
-        setupSettingsList(); // implement SettingsList
-        setupFragments();    // implement Fragments
+        setUpBottomNavigationView(); // implement Floating Action Menu
+        setupSettingsList();        // implement SettingsList
+        setupFragments();          // implement Fragments
 
 
         //setup the backarrow for navigating back to "ProfileActivity"
@@ -67,7 +69,7 @@ public class AccountSettingActivity extends AppCompatActivity {
         });
     }
 
-    // setupFragments
+    // Setup Fragments
     private void setupFragments() {
         pagerAdapter = new SectionStatePagerAadpter(getSupportFragmentManager());
         pagerAdapter.addFragment(new EditProfileFragment(), getString(R.string.edit_profile_fragment)); //fragment 0

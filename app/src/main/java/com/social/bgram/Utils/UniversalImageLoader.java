@@ -16,9 +16,6 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.social.bgram.R;
 
-/**
- * Created by Ahmed R. Abdo on 1/12/2018.
- */
 
 public class UniversalImageLoader {
     private static final int defaultImage = R.drawable.ic_android;
