@@ -23,7 +23,6 @@ import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 import com.social.bgram.Add.AddActivity;
 import com.social.bgram.Home.HomeActivity;
-import com.social.bgram.Login.LoginActivity;
 import com.social.bgram.Notification.NotificationActivity;
 import com.social.bgram.R;
 import com.social.bgram.Search.SearchActivity;
@@ -53,7 +52,7 @@ public class AccountSettingActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mRelativeLayout = (RelativeLayout) findViewById(R.id.relLayout1);
 
-        setUpBottomNavigationView(); // implement Floating Action Menu
+        circularFloatingActionMenu(); // implement Floating Action Menu
         setupSettingsList();        // implement SettingsList
         setupFragments();          // implement Fragments
 
@@ -115,7 +114,7 @@ public class AccountSettingActivity extends AppCompatActivity {
      */
 
     // BottomNavigationView Setup
-    private void setUpBottomNavigationView() {
+    private void circularFloatingActionMenu() {
 
         final ImageView icon = new ImageView(this); // Create an icon
         icon.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_launch_black_24dp));

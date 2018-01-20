@@ -46,12 +46,15 @@ public class HomeActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: starting."); // start
 
         setupFirebaseAuth();
-        setUpBottomNavigationView();
+        circularFloatingActionMenu();
         setupViewPager();
         initImageLoader();
     }
 
     // implement Universal image loader
+    /*
+    * https://github.com/nostra13/Android-Universal-Image-Loader
+    * */
     private void initImageLoader(){
         UniversalImageLoader universalImageLoader = new UniversalImageLoader(mContext);
         ImageLoader.getInstance().init(universalImageLoader.getConfig());
@@ -136,7 +139,7 @@ public class HomeActivity extends AppCompatActivity {
      */
 
     // BottomNavigationView Setup
-    private void setUpBottomNavigationView() {
+    private void circularFloatingActionMenu() {
 
         final ImageView icon = new ImageView(this); // Create an icon
         icon.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_launch_black_24dp));

@@ -33,7 +33,7 @@ public class AddActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate: started.");
 
-        setUpBottomNavigationView();
+        circularFloatingActionMenu();
     }
 
     /*
@@ -41,7 +41,7 @@ public class AddActivity extends AppCompatActivity {
      */
 
     // BottomNavigationView Setup
-    private void setUpBottomNavigationView() {
+    private void circularFloatingActionMenu() {
 
         final ImageView icon = new ImageView(this); // Create an icon
         icon.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_launch_black_24dp));

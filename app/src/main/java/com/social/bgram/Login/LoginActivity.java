@@ -104,6 +104,7 @@ public class LoginActivity extends AppCompatActivity {
                                         Toast.LENGTH_SHORT).show();
                                 Intent intentHome = new Intent(mContext, HomeActivity.class);
                                 startActivity(intentHome);
+                                finish();
                             }
                         }
                     });

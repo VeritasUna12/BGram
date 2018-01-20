@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
@@ -31,6 +32,8 @@ public class ProfileActivity extends AppCompatActivity {
     private Context mContext= ProfileActivity.this;
     private ProgressBar mProgressBar;
 
+    private TextView text_edit_profile;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +44,16 @@ public class ProfileActivity extends AppCompatActivity {
         ProgressBar mProgressBar = (ProgressBar) findViewById(R.id.profileProgressBar);
         mProgressBar.setVisibility(View.GONE);
 
-        setUpBottomNavigationView();
+        circularFloatingActionMenu();
         setupToolbar();
+        text_edit_profile = (TextView)findViewById(R.id.textEditProfile);
+
+        text_edit_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     private void setupToolbar(){
@@ -71,7 +82,7 @@ public class ProfileActivity extends AppCompatActivity {
      */
 
     // BottomNavigationView Setup
-    private void setUpBottomNavigationView() {
+    private void circularFloatingActionMenu() {
 
         final ImageView icon = new ImageView(this); // Create an icon
         icon.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_launch_black_24dp));
