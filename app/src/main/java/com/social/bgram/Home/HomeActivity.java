@@ -35,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private Context mContext= HomeActivity.this;
 
-    //firebase : Declare an instance of Firebase
+    //Firebase : Declare an instance of Firebase
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -69,6 +69,7 @@ public class HomeActivity extends AppCompatActivity {
         adapter.AddFragment(new MessagesFragment());
         ViewPager viewPager=(ViewPager) findViewById(R.id.container);
         viewPager.setAdapter(adapter);
+
         TabLayout tabLayout =(TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
@@ -114,7 +115,6 @@ public class HomeActivity extends AppCompatActivity {
                     Log.d(TAG, "onAuthStateChanged:signed_out");
 
                 }
-                // ...
             }
         };
     }
@@ -138,7 +138,7 @@ public class HomeActivity extends AppCompatActivity {
      *********************************** Floating Action Menu **************************************
      */
 
-    // BottomNavigationView Setup
+    // circularFloatingActionMenu Setup
     private void circularFloatingActionMenu() {
 
         final ImageView icon = new ImageView(this); // Create an icon

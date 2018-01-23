@@ -63,6 +63,8 @@ public class AccountSettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: navigating back to 'ProfileActivity'");
+                Intent i = new Intent(mContext, ProfileActivity.class);
+                startActivity(i);
                 finish();
             }
         });
@@ -113,7 +115,7 @@ public class AccountSettingActivity extends AppCompatActivity {
      *********************************** Floating Action Menu **************************************
      */
 
-    // BottomNavigationView Setup
+    // circularFloatingActionMenu Setup
     private void circularFloatingActionMenu() {
 
         final ImageView icon = new ImageView(this); // Create an icon

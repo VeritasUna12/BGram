@@ -1,5 +1,6 @@
 package com.social.bgram.Profile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -31,8 +32,10 @@ public class EditProfileFragment extends Fragment {
         backArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: navigating back to profileActivity");
-                getActivity().finish();
+                Log.d(TAG, "onClick: navigating back to AccountSettingActivity");
+                Intent i = new Intent(getActivity(), AccountSettingActivity.class);
+                getActivity().startActivity(i);
+                /*getActivity().finish();*/
             }
         });
         return view;

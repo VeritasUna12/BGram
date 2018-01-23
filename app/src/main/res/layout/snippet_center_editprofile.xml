@@ -88,7 +88,7 @@
                     android:layout_marginLeft="40dp"
                     android:background="@null"
                     android:inputType="textNoSuggestions"
-                    android:hint="display name"/>
+                    android:hint="Name"/>
 
             </RelativeLayout>
 

@@ -15,6 +15,11 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.social.bgram.Home.HomeActivity;
 import com.social.bgram.R;
 import com.social.bgram.Utils.FirebaseMethods;
@@ -30,7 +35,13 @@ public class RegisterActivity extends AppCompatActivity {
     // Declare an instance of firebase
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+
     private FirebaseMethods firebaseMethods;
+
+    // Declare an instance of firebase
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mReference;
+    private String append = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         mContext = RegisterActivity.this;
         firebaseMethods = new FirebaseMethods(mContext);
+
         Log.d(TAG, "onCreate: started.");
 
         initWidgets();
@@ -120,11 +132,32 @@ public class RegisterActivity extends AppCompatActivity {
                 if (user != null) {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+
+                    // check if the username is exists
+                    mReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+                            //first check :  make sure the username is not already in used
+                            if (firebaseMethods.checkIfUsernameExists(username, dataSnapshot)) {
+                                append = mReference.getKey().substring(3, 10);
+                                Log.d(TAG, "onDataChange: username already exists. Appending random string to name: " + append);
+                            }
+                            username = username = append;
+                        }
+                        
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                            });
+
+                    finish();
+
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-                // ...
             }
         };
     }

@@ -26,13 +26,12 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
 
-    // Declare an instance of firebase
+    // Firebase: Declare an instance of Firebase
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
     private Context mContext;
     private EditText mEmail, mPassword;
-    RelativeLayout activity_login;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -119,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: navigating to register screen");
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(mContext, RegisterActivity.class);
                 startActivity(intent);
             }
         });
@@ -128,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
         //If the user is logged in then navigate to HomeActivity and call 'finish()'
 
         if(mAuth.getCurrentUser() != null){
-            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            Intent intent = new Intent(mContext, HomeActivity.class);
             startActivity(intent);
             finish();
         }
@@ -154,7 +153,6 @@ public class LoginActivity extends AppCompatActivity {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-                // ...
             }
         };
     }

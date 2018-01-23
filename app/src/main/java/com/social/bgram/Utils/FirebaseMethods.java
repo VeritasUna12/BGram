@@ -9,11 +9,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.social.bgram.R;
+import com.social.bgram.models.User;
 
 /**
  * Created by Ahmed R. Abdo on 1/12/2018 To Great New User
@@ -41,9 +43,28 @@ public class FirebaseMethods {
         }
     }
 
+    //Check If The Username Exists or not
+    public boolean checkIfUsernameExists(String username, DataSnapshot datasnapshot){
+        Log.d(TAG, "checkIfUsernameExists: checking if " + username + " already exists.");
 
-     // Register a new email and password to Firebase Authentication
+        User user = new User();
 
+        for (DataSnapshot ds: datasnapshot.child(userID).getChildren()){
+            Log.d(TAG, "checkIfUsernameExists: datasnapshot: " + ds);
+
+            user.setUsername(ds.getValue(User.class).getUsername());
+            Log.d(TAG, "checkIfUsernameExists: username: " + user.getUsername());
+
+            if(StringManipulation.expandUsername(user.getUsername()).equals(username)){
+                Log.d(TAG, "checkIfUsernameExists: FOUND A MATCH: " + user.getUsername());
+                return true;
+            }
+        }
+        return false;
+   }
+
+
+        // Register a new email and password to Firebase Authentication
         public void registerNewEmail(final String email, String password, final String username){
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -64,6 +85,8 @@ public class FirebaseMethods {
                         }
                     });
         }
+
+
 
     }
 

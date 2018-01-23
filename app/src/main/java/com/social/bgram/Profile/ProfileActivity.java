@@ -81,7 +81,7 @@ public class ProfileActivity extends AppCompatActivity {
      *********************************** Floating Action Menu **************************************
      */
 
-    // BottomNavigationView Setup
+    // circularFloatingActionMenu Setup
     private void circularFloatingActionMenu() {
 
         final ImageView icon = new ImageView(this); // Create an icon
