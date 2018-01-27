@@ -140,10 +140,10 @@ public class RegisterActivity extends AppCompatActivity {
 
                             //first check :  make sure the username is not already in used
                             if (firebaseMethods.checkIfUsernameExists(username, dataSnapshot)) {
-                                append = mReference.getKey().substring(3, 10);
+                                append = mReference.push().getKey().substring(3, 10);
                                 Log.d(TAG, "onDataChange: username already exists. Appending random string to name: " + append);
                             }
-                            username = username = append;
+                            username = username + append;
                         }
                         
                         @Override

@@ -68,7 +68,7 @@ public class ProfileFragment extends Fragment {
         Log.d(TAG, "onCreateView: stared.");
 
 
-        setupToolbar();
+        //setupToolbar();
 
         return view;
     }
