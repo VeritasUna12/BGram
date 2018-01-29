@@ -2,6 +2,7 @@ package com.social.bgram.Profile;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,11 +29,10 @@ import com.social.bgram.Search.SearchActivity;
 public class ProfileActivity extends AppCompatActivity {
 
     private static final String TAG = "ProfileActivity";
-
     private Context mContext= ProfileActivity.this;
     private ProgressBar mProgressBar;
 
-    private TextView text_edit_profile;
+//    private TextView text_edit_profile;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,37 +41,47 @@ public class ProfileActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: started.");
 
         //to not display all time in profile activity
-        ProgressBar mProgressBar = (ProgressBar) findViewById(R.id.profileProgressBar);
-        mProgressBar.setVisibility(View.GONE);
+//        ProgressBar mProgressBar = (ProgressBar) findViewById(R.id.profileProgressBar);
+//        mProgressBar.setVisibility(View.GONE);
+
+        /*init();*/
 
         circularFloatingActionMenu();
-        setupToolbar();
-        text_edit_profile = (TextView)findViewById(R.id.textEditProfile);
-
-        text_edit_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+//        setupToolbar();
+//        text_edit_profile = (TextView)findViewById(R.id.textEditProfile);
+//
+//        text_edit_profile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
     }
 
-    private void setupToolbar(){
-        Toolbar toolbar = (Toolbar) findViewById(R.id.profileToolbar);
-        setSupportActionBar(toolbar);
+    /*private void init(){
+        ProfileFragment fragment = new ProfileFragment();
+        android.support.v4.app.FragmentTransaction transaction = ProfileActivity.this.getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container,fragment);
+        transaction.addToBackStack(getString(R.string.profile_fragment));
+        transaction.commit();
+    }*/
 
-        // implement when click on menu button
-        ImageView profileMenu = (ImageView) findViewById(R.id.profileMenu);
-        profileMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onClick: navigating to account settings.");
-                Intent intent = new Intent(mContext, AccountSettingActivity.class);
-                startActivity(intent);
-            }
-        });
-
-    }
+//    private void setupToolbar(){
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.profileToolbar);
+//        setSupportActionBar(toolbar);
+//
+//        // implement when click on menu button
+//        ImageView profileMenu = (ImageView) findViewById(R.id.profileMenu);
+//        profileMenu.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d(TAG, "onClick: navigating to account settings.");
+//                Intent intent = new Intent(mContext, AccountSettingActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//    }
 
    /*
      ***********************************************************************************************
@@ -81,7 +91,7 @@ public class ProfileActivity extends AppCompatActivity {
      *********************************** Floating Action Menu **************************************
      */
 
-    // circularFloatingActionMenu Setup
+    // BottomNavigationView Setup
     private void circularFloatingActionMenu() {
 
         final ImageView icon = new ImageView(this); // Create an icon

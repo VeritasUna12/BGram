@@ -19,10 +19,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.social.bgram.Home.HomeActivity;
 import com.social.bgram.R;
 import com.social.bgram.Utils.FirebaseMethods;
+import com.social.bgram.models.User;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -38,7 +40,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseMethods firebaseMethods;
 
-    // Declare an instance of firebase
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mReference;
     private String append = "";
@@ -70,9 +71,6 @@ public class RegisterActivity extends AppCompatActivity {
                 if(checkInputs(email, username, password)){
 
                     firebaseMethods.registerNewEmail(email, password, username);
-                    Intent intent = new Intent(mContext, HomeActivity.class);
-                    startActivity(intent);
-                    finish();
                 }
             }
         });
@@ -117,12 +115,57 @@ public class RegisterActivity extends AppCompatActivity {
      ************************************ Firebase DataBase ****************************************
      */
 
+    /**
+     * Check is @param username already exists in teh database
+     * @param username
+     */
+    private void checkIfUsernameExists(final String username) {
+        Log.d(TAG, "checkIfUsernameExists: Checking if  " + username + " already exists.");
+
+
+        mReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot singleSnapshot: dataSnapshot.getChildren()){
+                    if (singleSnapshot.exists()){
+                        Log.d(TAG, "checkIfUsernameExists: FOUND A MATCH: " + singleSnapshot.getValue(User.class).getUsername());
+                        append = mReference.push().getKey().substring(3,10);
+                        Log.d(TAG, "onDataChange: username already exists. Appending random string to name: " + append);
+                    }
+                }
+
+                String mUsername = "";
+                mUsername = username + append;
+
+                //add new user to the database
+                firebaseMethods.addNewUser(email, mUsername, "", "", "");
+
+                Toast.makeText(mContext, "Signup successful. Sending verification email.", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(mContext, HomeActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
     // Setup the firebase auth object
 
     private void setupFirebaseAuth(){
 
         //initialize the FirebaseAuth Object.
         mAuth = FirebaseAuth.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mReference = mFirebaseDatabase.getReference();
+
         mAuthListener = new FirebaseAuth.AuthStateListener() {
 
             @Override
@@ -137,20 +180,14 @@ public class RegisterActivity extends AppCompatActivity {
                     mReference.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-
-                            //first check :  make sure the username is not already in used
-                            if (firebaseMethods.checkIfUsernameExists(username, dataSnapshot)) {
-                                append = mReference.getKey().substring(3, 10);
-                                Log.d(TAG, "onDataChange: username already exists. Appending random string to name: " + append);
-                            }
-                            username = username = append;
+                            checkIfUsernameExists(username);
                         }
-                        
+
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
 
                         }
-                            });
+                    });
 
                     finish();
 

@@ -49,6 +49,8 @@ public class HomeActivity extends AppCompatActivity {
         circularFloatingActionMenu();
         setupViewPager();
         initImageLoader();
+
+        /*mAuth.signOut();*/
     }
 
     // implement Universal image loader

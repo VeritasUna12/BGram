@@ -9,6 +9,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -16,6 +17,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.social.bgram.R;
 import com.social.bgram.models.User;
+import com.social.bgram.models.UserAccountSettings;
 
 /**
  * Created by Ahmed R. Abdo on 1/12/2018 To Great New User
@@ -29,6 +31,9 @@ public class FirebaseMethods {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mReference;
+
     private String userID;
 
     //vars
@@ -36,6 +41,8 @@ public class FirebaseMethods {
 
     public FirebaseMethods(Context context) {
         mAuth = FirebaseAuth.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mReference = mFirebaseDatabase.getReference();
         mContext = context;
 
         if (mAuth.getCurrentUser() != null) {
@@ -44,7 +51,7 @@ public class FirebaseMethods {
     }
 
     //Check If The Username Exists or not
-    public boolean checkIfUsernameExists(String username, DataSnapshot datasnapshot){
+   /* public boolean checkIfUsernameExists(String username, DataSnapshot datasnapshot){
         Log.d(TAG, "checkIfUsernameExists: checking if " + username + " already exists.");
 
         User user = new User();
@@ -61,8 +68,11 @@ public class FirebaseMethods {
             }
         }
         return false;
-   }
+    }*/
 
+    /*
+     *********************************** Register New Email **************************************
+     */
 
         // Register a new email and password to Firebase Authentication
         public void registerNewEmail(final String email, String password, final String username){
@@ -78,15 +88,86 @@ public class FirebaseMethods {
                             if (!task.isSuccessful()) {
                                 Toast.makeText(mContext, R.string.auth_failed,
                                         Toast.LENGTH_SHORT).show();
+
                             }
+                            else if(task.isSuccessful()){
+
+                                //send verificaton email
+                                sendVerificationEmail();
+
                                 userID = mAuth.getCurrentUser().getUid();
                                 Log.d(TAG, "onComplete: Authstate changed: " + userID);
-
+                            }
                         }
                     });
         }
 
+         /*
+     ********************************** Send Verification Email ************************************
+     */
 
+    public void sendVerificationEmail(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if(user != null){
+            user.sendEmailVerification()
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+
+                            }else{
+                                Toast.makeText(mContext, "couldn't send verification email.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+        }
+    }
+
+     /*
+     ******************************** Add Information About New User *******************************
+     */
+
+    /**
+     * Add information to the users nodes
+     * Add information to the user_account_settings node
+     * @param email
+     * @param username
+     * @param description
+     * @param website
+     * @param profile_photo
+     */
+    public void addNewUser(String email, String username, String description, String website, String profile_photo){
+
+        User user = new User( userID,  1,  email,  StringManipulation.condenseUsername(username) );
+
+        mReference.child(mContext.getString(R.string.dbname_users))
+                .child(userID)
+                .setValue(user);
+
+
+        UserAccountSettings settings = new UserAccountSettings(
+                description,
+                username,
+                0,
+                0,
+                0,
+                profile_photo,
+                StringManipulation.condenseUsername(username),
+                website,
+                userID
+        );
+
+        mReference.child(mContext.getString(R.string.dbname_user_account_settings))
+                .child(userID)
+                .setValue(settings);
 
     }
+
+    /*
+     ********************************  *******************************
+     */
+
+
+}
 
