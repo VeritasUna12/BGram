@@ -59,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
         init();
     }
 
-    // When Click SignUp Button Greate New User
+    // When Click SignUp Button Create New User
     private void init(){
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
