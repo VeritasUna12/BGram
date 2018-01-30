@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
             Log.d(TAG, "onClick: attempting to log in.");
-            String email = mEmail.getText().toString();
+            final String email = mEmail.getText().toString();
             String password = mPassword.getText().toString();
 
             if(isStringNull(email) && isStringNull(password)){
@@ -98,8 +98,8 @@ public class LoginActivity extends AppCompatActivity {
                             }
                             else{
                                 try{
-                                    if(user.isEmailVerified()){
-                                        Log.d(TAG, "onComplete: success. email is verified.");
+                                    if(user.isEmailVerified() ){
+                                        Log.d(TAG, "signInWithEmail:Successful");
                                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                         startActivity(intent);
                                     }else{

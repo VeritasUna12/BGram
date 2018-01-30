@@ -70,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if(checkInputs(email, username, password)){
 
-                    firebaseMethods.registerNewEmail(email, password, username);
+                    firebaseMethods.registerNewEmail(email, password);
                 }
             }
         });
@@ -129,23 +129,37 @@ public class RegisterActivity extends AppCompatActivity {
 
                 for(DataSnapshot singleSnapshot: dataSnapshot.getChildren()){
                     if (singleSnapshot.exists()){
-                        Log.d(TAG, "checkIfUsernameExists: FOUND A MATCH: " + singleSnapshot.getValue(User.class).getUsername());
+                        firebaseMethods.addNewUser(email, username, "", "", "");
+
+                        Toast.makeText(mContext, "Signup successful. Sending verification email.", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(mContext, HomeActivity.class);
+                        startActivity(intent);
+                        finish();
+
+
+                    }
+                    else {
+                                                Log.d(TAG, "checkIfUsernameExists: FOUND A MATCH: " + singleSnapshot.getValue(User.class).getUsername());
                         append = mReference.push().getKey().substring(3,10);
                         Log.d(TAG, "onDataChange: username already exists. Appending random string to name: " + append);
+                        String mUsername = "";
+                        mUsername = username + append;
+                        //add new user to the database
+                        firebaseMethods.addNewUser(email, mUsername, "", "", "");
+
+                        Toast.makeText(mContext, "Signup successful. Sending verification email.", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(mContext, HomeActivity.class);
+                        startActivity(intent);
+                        finish();
                     }
                 }
 
-                String mUsername = "";
-                mUsername = username + append;
 
-                //add new user to the database
-                firebaseMethods.addNewUser(email, mUsername, "", "", "");
 
-                Toast.makeText(mContext, "Signup successful. Sending verification email.", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(mContext, HomeActivity.class);
+                /*Intent intent = new Intent(mContext, HomeActivity.class);
                 startActivity(intent);
-                finish();
+                finish();*/
 
             }
 
