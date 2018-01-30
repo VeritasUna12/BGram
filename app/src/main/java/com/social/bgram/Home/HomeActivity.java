@@ -50,7 +50,7 @@ public class HomeActivity extends AppCompatActivity {
         setupViewPager();
         initImageLoader();
 
-//        mAuth.signOut();
+       /*mAuth.signOut();*/
     }
 
     // implement Universal image loader
