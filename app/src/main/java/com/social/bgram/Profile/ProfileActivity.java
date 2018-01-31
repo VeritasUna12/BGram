@@ -44,9 +44,9 @@ public class ProfileActivity extends AppCompatActivity {
 //        ProgressBar mProgressBar = (ProgressBar) findViewById(R.id.profileProgressBar);
 //        mProgressBar.setVisibility(View.GONE);
 
-        /*init();*/
+        init();
+        /*circularFloatingActionMenu();*/
 
-        circularFloatingActionMenu();
 //        setupToolbar();
 //        text_edit_profile = (TextView)findViewById(R.id.textEditProfile);
 //
@@ -58,13 +58,26 @@ public class ProfileActivity extends AppCompatActivity {
 //        });
     }
 
-    /*private void init(){
+    private void init(){
+        Log.d(TAG, "init: inflating " + getString(R.string.profile_fragment));
+
+        /*
+     ********************** Add ProfileFragment in ProfileActivity (container) ********************
+     */
+
+         /*Replace whatever is in the fragment_container view with this fragment,
+         and add the transaction to the back stack so the user can navigate back*/
         ProfileFragment fragment = new ProfileFragment();
         android.support.v4.app.FragmentTransaction transaction = ProfileActivity.this.getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container,fragment);
         transaction.addToBackStack(getString(R.string.profile_fragment));
         transaction.commit();
-    }*/
+    }
+
+
+    /*
+     *********************************** Setup Toolbar **************************************
+     */
 
 //    private void setupToolbar(){
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.profileToolbar);
@@ -89,7 +102,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     /*
      *********************************** Floating Action Menu **************************************
-     */
+     *//*
 
     // BottomNavigationView Setup
     private void circularFloatingActionMenu() {
@@ -200,7 +213,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
-    /*
+    *//*
      ***********************************************************************************************
      */
 
