@@ -50,7 +50,7 @@ public class HomeActivity extends AppCompatActivity {
         setupViewPager();
         initImageLoader();
 
-       /*mAuth.signOut();*/
+       //mAuth.signOut();
     }
 
     // implement Universal image loader
@@ -89,10 +89,18 @@ public class HomeActivity extends AppCompatActivity {
     private void checkCurrentUser(FirebaseUser user){
         Log.d(TAG, "checkCurrentUser: checking if user is logged in.");
 
-         if(user == null){
+        if (user != null) {
+            // User is signed in
+            Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+
             Intent intent = new Intent(mContext, LoginActivity.class);
             startActivity(intent);
-         }
+
+        } else {
+            // User is signed out
+            Log.d(TAG, "onAuthStateChanged:signed_out");
+
+        }
     }
 
      // Setup the firebase auth object
@@ -109,14 +117,6 @@ public class HomeActivity extends AppCompatActivity {
                 // check if the user is logged in
                  checkCurrentUser(user);
 
-                if (user != null) {
-                    // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                } else {
-                    // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
-
-                }
             }
         };
     }

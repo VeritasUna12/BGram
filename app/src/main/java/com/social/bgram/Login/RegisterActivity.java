@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,7 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
         init();
     }
 
-    // When Click SignUp Button Create New User
+    // When Click SignUp Button Greate New User
     private void init(){
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,9 +69,9 @@ public class RegisterActivity extends AppCompatActivity {
                 username = mUsername.getText().toString();
                 password = mPassword.getText().toString();
 
-                if(checkInputs(email, username, password)){
+                if(checkInputs(email ,username, password)){
 
-                    firebaseMethods.registerNewEmail(email, password);
+                    firebaseMethods.registerNewEmail(email,password,username);
                 }
             }
         });
@@ -86,7 +87,7 @@ public class RegisterActivity extends AppCompatActivity {
         return true;
     }
 
-      // Initi the activity widgets
+    // Initi the activity widgets
 
     private void initWidgets(){
         Log.d(TAG, "initWidgets: Initializing Widgets.");
@@ -139,7 +140,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     }
                     else {
-                                                Log.d(TAG, "checkIfUsernameExists: FOUND A MATCH: " + singleSnapshot.getValue(User.class).getUsername());
+                        Log.d(TAG, "checkIfUsernameExists: FOUND A MATCH: " + singleSnapshot.getValue(User.class).getUsername());
                         append = mReference.push().getKey().substring(3,10);
                         Log.d(TAG, "onDataChange: username already exists. Appending random string to name: " + append);
                         String mUsername = "";
@@ -232,4 +233,3 @@ public class RegisterActivity extends AppCompatActivity {
      */
 
 }
-
