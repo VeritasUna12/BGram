@@ -71,7 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if(checkInputs(email ,username, password)){
 
-                    firebaseMethods.registerNewEmail(email,password,username);
+                    firebaseMethods.registerNewEmail(email,password/*,username*/);
                 }
             }
         });

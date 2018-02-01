@@ -93,12 +93,13 @@ public class HomeActivity extends AppCompatActivity {
             // User is signed in
             Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
 
-            Intent intent = new Intent(mContext, LoginActivity.class);
-            startActivity(intent);
+
 
         } else {
             // User is signed out
             Log.d(TAG, "onAuthStateChanged:signed_out");
+            Intent intent = new Intent(mContext, LoginActivity.class);
+            startActivity(intent);
 
         }
     }
