@@ -1,8 +1,6 @@
 package com.social.bgram.models;
 
-/**
- * Created by User on 6/30/2017.
- */
+
 
 public class UserSettings {
 
@@ -42,4 +40,5 @@ public class UserSettings {
                 ", settings=" + settings +
                 '}';
     }
+
 }

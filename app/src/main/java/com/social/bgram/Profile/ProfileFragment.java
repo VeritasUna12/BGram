@@ -78,15 +78,15 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         mDisplayName = (TextView) view.findViewById(R.id.display_name);
-        mUsername = (TextView) view.findViewById(R.id.profileName);
+        mUsername = (TextView) view.findViewById(R.id.username);
         mWebsite = (TextView) view.findViewById(R.id.website);
         mDescription = (TextView) view.findViewById(R.id.description);
         mProfilePhoto = (CircleImageView) view.findViewById(R.id.profile_photo);
         mPosts = (TextView) view.findViewById(R.id.tvPosts);
         mFollowers = (TextView) view.findViewById(R.id.tvFollowers);
         mFollowing = (TextView) view.findViewById(R.id.tvFollowing);
-        /*mProgressBar = (ProgressBar) view.findViewById(R.id.profileProgressBar);*/
-        /*gridView = (GridView) view.findViewById(R.id.gridView);*/
+        mProgressBar = (ProgressBar) view.findViewById(R.id.profileProgressBar);
+        gridView = (GridView) view.findViewById(R.id.gridView);
         toolbar = (Toolbar) view.findViewById(R.id.profileToolBar);
         profileMenu = (ImageView) view.findViewById(R.id.profileMenu);
         mContext = getActivity();
@@ -98,13 +98,30 @@ public class ProfileFragment extends Fragment {
         circularFloatingActionMenu();
         setupFirebaseAuth();
 
+
+                /*
+             *********************** Move To Edit Profile (Resiving) ************************
+             */
+
+        TextView editProfile = (TextView) view.findViewById(R.id.textEditProfile);
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: navigating to " + mContext.getString(R.string.edit_profile_fragment));
+                Intent intent = new Intent(getActivity(), AccountSettingActivity.class);
+                intent.putExtra(getString(R.string.calling_activity), getString(R.string.profile_activity));
+                startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
+        });
+
         return view;
     }
 
 
-    /*
-     *********************** Setting Profile Fragment Widgets ************************
-     */
+            /*
+             ********************* Setting Profile Fragment Views " Widgets " **********************
+             */
 
     private void setProfileWidgets(UserSettings userSettings) {
         Log.d(TAG, "setProfileWidgets: setting widgets with data retrieving from firebase database: " + userSettings.toString());
@@ -118,8 +135,8 @@ public class ProfileFragment extends Fragment {
 
         mDisplayName.setText(settings.getDisplay_name());
         mUsername.setText(settings.getUsername());
-        /*mWebsite.setText(settings.getWebsite());*/
-        /*mDescription.setText(settings.getDescription());*/
+        /*mWebsite.setText(settings.getWebsite());
+        mDescription.setText(settings.getDescription());*/
         mPosts.setText(String.valueOf(settings.getPosts()));
         mFollowers.setText(String.valueOf(settings.getFollowers()));
         mFollowing.setText(String.valueOf(settings.getFollowing()));
@@ -147,7 +164,7 @@ public class ProfileFragment extends Fragment {
     }
 
 
-/*
+    /*
      ************************************ Firebase DataBase ****************************************
      */
 
@@ -176,15 +193,13 @@ public class ProfileFragment extends Fragment {
             }
         };
 
+
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 //retrieve user information from the database
                 setProfileWidgets(mFirebaseMethods.getUserSettings(dataSnapshot));
-
-                //retrieve images for the user in question
-
             }
 
             @Override

@@ -60,7 +60,7 @@
                     android:layout_marginLeft="40dp"
                     android:background="@null"
                     android:inputType="textNoSuggestions"
-                    android:hint="username"/>
+                    android:hint="Username"/>
 
             </RelativeLayout>
 
@@ -88,7 +88,7 @@
                     android:layout_marginLeft="40dp"
                     android:background="@null"
                     android:inputType="textNoSuggestions"
-                    android:hint="Name"/>
+                    android:hint="Account Name"/>
 
             </RelativeLayout>
 
@@ -144,7 +144,7 @@
                     android:layout_marginLeft="40dp"
                     android:background="@null"
                     android:inputType="textNoSuggestions"
-                    android:hint="Description"/>
+                    android:hint="About Me"/>
 
             </RelativeLayout>
 
@@ -153,12 +153,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
-                android:text="Private Information"
+                android:text="Personal Information"
                 android:layout_below="@id/relLayout4"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="50dp"
                 android:textColor="@color/green"
-                android:background="@drawable/grey_border_bottom"
                 android:id="@+id/textPrivateInfo"/>
 
 

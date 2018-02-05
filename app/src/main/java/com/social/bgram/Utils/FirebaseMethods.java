@@ -20,9 +20,6 @@ import com.social.bgram.models.User;
 import com.social.bgram.models.UserAccountSettings;
 import com.social.bgram.models.UserSettings;
 
-/**
- * Created by Ahmed R. Abdo on 1/12/2018 To Great New User
- */
 
 public class FirebaseMethods {
 
@@ -51,25 +48,74 @@ public class FirebaseMethods {
         }
     }
 
-    //Check If The Username Exists or not
-   /* public boolean checkIfUsernameExists(String username, DataSnapshot datasnapshot){
-        Log.d(TAG, "checkIfUsernameExists: checking if " + username + " already exists.");
+    /*
+     *********************************** Update Username **************************************
+     */
 
-        User user = new User();
+    // update username in the 'users' field and 'user_account_settings' field
 
-        for (DataSnapshot ds: datasnapshot.child(userID).getChildren()){
-            Log.d(TAG, "checkIfUsernameExists: datasnapshot: " + ds);
+    public void updateUsername(String username){
+        Log.d(TAG, "updateUsername: upadting username to: " + username);
 
-            user.setUsername(ds.getValue(User.class).getUsername());
-            Log.d(TAG, "checkIfUsernameExists: username: " + user.getUsername());
+        mReference.child(mContext.getString(R.string.dbname_users))
+                .child(userID)
+                .child(mContext.getString(R.string.field_username))
+                .setValue(username);
 
-            if(StringManipulation.expandUsername(user.getUsername()).equals(username)){
-                Log.d(TAG, "checkIfUsernameExists: FOUND A MATCH: " + user.getUsername());
-                return true;
-            }
+        mReference.child(mContext.getString(R.string.dbname_user_account_settings))
+                .child(userID)
+                .child(mContext.getString(R.string.field_username))
+                .setValue(username);
+    }
+
+    /**
+     * Update 'user_account_settings' node for the current user
+     * @param displayName
+     * @param website
+     * @param description
+     * @param phoneNumber
+     */
+    public void updateUserAccountSettings(String displayName, String website, String description, long phoneNumber){
+
+        Log.d(TAG, "updateUserAccountSettings: updating user account settings.");
+
+        if(displayName != null){
+            mReference.child(mContext.getString(R.string.dbname_user_account_settings))
+                    .child(userID)
+                    .child(mContext.getString(R.string.field_display_name))
+                    .setValue(displayName);
         }
-        return false;
-    }*/
+
+
+        if(website != null) {
+            mReference.child(mContext.getString(R.string.dbname_user_account_settings))
+                    .child(userID)
+                    .child(mContext.getString(R.string.field_website))
+                    .setValue(website);
+        }
+
+        if(description != null) {
+            mReference.child(mContext.getString(R.string.dbname_user_account_settings))
+                    .child(userID)
+                    .child(mContext.getString(R.string.field_description))
+                    .setValue(description);
+        }
+
+        if(phoneNumber != 0) {
+            mReference.child(mContext.getString(R.string.dbname_user_account_settings))
+                    .child(userID)
+                    .child(mContext.getString(R.string.field_phone_number))
+                    .setValue(phoneNumber);
+        }
+
+        if(phoneNumber != 0) {
+            mReference.child(mContext.getString(R.string.dbname_users))
+                    .child(userID)
+                    .child(mContext.getString(R.string.field_phone_number))
+                    .setValue(phoneNumber);
+        }
+    }
+
 
     /*
      *********************************** Register New Email **************************************
@@ -96,12 +142,16 @@ public class FirebaseMethods {
                                 //send verificaton email
                                 sendVerificationEmail();
 
+                                Toast.makeText(mContext, R.string.auth_success,
+                                        Toast.LENGTH_SHORT).show();
+
                                 userID = mAuth.getCurrentUser().getUid();
                                 Log.d(TAG, "onComplete: Authstate changed: " + userID);
                             }
                         }
                     });
         }
+
 
          /*
      ********************************** Send Verification Email ************************************
@@ -171,7 +221,7 @@ public class FirebaseMethods {
 
     /**
      * Retrieves the account settings for teh user currently logged in
-     * Database: user_acount_Settings node
+     * Database: user_acount_Settings filed
      */
     public UserSettings getUserSettings(DataSnapshot dataSnapshot){
         Log.d(TAG, "getUserAccountSettings: retrieving user account settings from firebase.");
@@ -182,7 +232,7 @@ public class FirebaseMethods {
 
         for(DataSnapshot ds: dataSnapshot.getChildren()){
 
-            // user_account_settings node
+            // user_account_settings filed
             if(ds.getKey().equals(mContext.getString(R.string.dbname_user_account_settings))) {
                 Log.d(TAG, "getUserAccountSettings: user account settings node datasnapshot: " + ds);
 
@@ -236,10 +286,10 @@ public class FirebaseMethods {
             }
 
 
-            // users node
+            // users fileds
             Log.d(TAG, "getUserSettings: snapshot key: " + ds.getKey());
             if(ds.getKey().equals(mContext.getString(R.string.dbname_users))) {
-                Log.d(TAG, "getUserAccountSettings: users node datasnapshot: " + ds);
+                Log.d(TAG, "getUserAccountSettings: users filed datasnapshot: " + ds);
 
                 user.setUsername(
                         ds.child(userID)
@@ -268,7 +318,6 @@ public class FirebaseMethods {
         return new UserSettings(user, settings);
 
     }
-
 
 }
 

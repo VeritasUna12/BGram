@@ -4,7 +4,9 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -18,6 +20,13 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
@@ -26,6 +35,7 @@ import com.social.bgram.Home.HomeActivity;
 import com.social.bgram.Notification.NotificationActivity;
 import com.social.bgram.R;
 import com.social.bgram.Search.SearchActivity;
+import com.social.bgram.Utils.FirebaseMethods;
 import com.social.bgram.Utils.SectionStatePagerAadpter;
 
 import java.util.ArrayList;
@@ -33,6 +43,7 @@ import java.util.ArrayList;
 public class AccountSettingActivity extends AppCompatActivity {
 
     private static final String TAG = "AccountSettingActivity";
+
     private Context mContext;
 
     // Declar ViewPager and SectionStatePagerAadpter
@@ -55,9 +66,12 @@ public class AccountSettingActivity extends AppCompatActivity {
         circularFloatingActionMenu(); // implement Floating Action Menu
         setupSettingsList();        // implement SettingsList
         setupFragments();          // implement Fragments
+        getIncomingIntent();
 
+        /*
+     ***************** setup the backarrow for navigating back to "ProfileActivity" ****************
+     */
 
-        //setup the backarrow for navigating back to "ProfileActivity"
         ImageView backArrow = (ImageView) findViewById(R.id.backArrow);
         backArrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +84,23 @@ public class AccountSettingActivity extends AppCompatActivity {
         });
     }
 
-    // Setup Fragments
+         /*
+         *********************** To Move To Edit Profile (Sending) **************************
+         */
+
+    private void getIncomingIntent(){
+        Intent intent = getIntent();
+        if(intent.hasExtra(getString(R.string.calling_activity))){
+            Log.d(TAG, "getIncomingIntent: received incoming intent from " + getString(R.string.profile_activity));
+            setViewPager(pagerAdapter.getFragmentNumber(getString(R.string.edit_profile_fragment)));
+        }
+    }
+
+
+                /*
+                 *********************** Setup Fragments **************************
+                 */
+
     private void setupFragments() {
         pagerAdapter = new SectionStatePagerAadpter(getSupportFragmentManager());
         pagerAdapter.addFragment(new EditProfileFragment(), getString(R.string.edit_profile_fragment)); //fragment 0
@@ -85,7 +115,10 @@ public class AccountSettingActivity extends AppCompatActivity {
     }
 
 
-    // setupSettingsList with display item in list view by array adapter
+    /*
+     ************** setup Settings List with display item in list view by array adapter ***************
+     */
+
     private void setupSettingsList() {
         Log.d(TAG, "setupSettingsList: initializing 'Account Settings' list.");
         ListView listView = (ListView) findViewById(R.id.lvAccountSetting);
@@ -110,6 +143,7 @@ public class AccountSettingActivity extends AppCompatActivity {
      /*
      ***********************************************************************************************
      */
+
 
     /*
      *********************************** Floating Action Menu **************************************
