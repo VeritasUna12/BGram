@@ -139,9 +139,6 @@ public class FirebaseMethods {
                             }
                             else if(task.isSuccessful()){
 
-                                //send verificaton email
-                                sendVerificationEmail();
-
                                 Toast.makeText(mContext, R.string.auth_success,
                                         Toast.LENGTH_SHORT).show();
 

@@ -13,7 +13,7 @@
     <string name="confirm_password_dialog">ConfirmPaswordDialog</string>
 
     <!-- Firebase messages -->
-    <string name="auth_failed">Failed to Authenticate</string>
+    <string name="auth_failed">Failed to Authenticate , email is Exist </string>
     <string name="auth_success">Authentication Success</string>
 
     <!-- Firebase database fields -->
