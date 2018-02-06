@@ -36,6 +36,8 @@ public class SearchActivity extends AppCompatActivity {
         circularFloatingActionMenu();
     }
 
+
+
     /*
      *********************************** Floating Action Menu **************************************
      */
