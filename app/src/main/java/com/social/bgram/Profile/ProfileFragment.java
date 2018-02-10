@@ -49,9 +49,6 @@ public class ProfileFragment extends Fragment {
     private static final String TAG = "ProfileFragment";
 
 
-    /*private static final int ACTIVITY_NUM = 4;
-    private static final int NUM_GRID_COLUMNS = 3;*/
-
     //Firebase : Declare an instance of Firebase
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;

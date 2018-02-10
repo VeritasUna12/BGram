@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BGram.iml" filepath="$PROJECT_DIR$/BGram.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CircleImageView-master/CircleImageView-master.iml" filepath="$PROJECT_DIR$/CircleImageView-master/CircleImageView-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CircleImageView-master/circleimageview/circleimageview.iml" filepath="$PROJECT_DIR$/CircleImageView-master/circleimageview/circleimageview.iml" />
     </modules>
   </component>
 </project>

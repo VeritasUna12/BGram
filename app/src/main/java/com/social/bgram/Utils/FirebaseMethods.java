@@ -150,28 +150,6 @@ public class FirebaseMethods {
         }
 
 
-         /*
-     ********************************** Send Verification Email ************************************
-     */
-
-    public void sendVerificationEmail(){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        if(user != null){
-            user.sendEmailVerification()
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if(task.isSuccessful()){
-
-                            }else{
-                                Toast.makeText(mContext, "couldn't send verification email.", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-        }
-    }
-
      /*
      ******************************** Add Information About New User *******************************
      */

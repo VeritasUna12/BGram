@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.social.bgram.Add.AddActivity;
 import com.social.bgram.Home.HomeActivity;
 import com.social.bgram.R;
 import com.social.bgram.Utils.FirebaseMethods;
@@ -72,7 +73,6 @@ public class EditProfileFragment extends Fragment {
         mFirebaseMethods = new FirebaseMethods(getActivity());
 
 
-        //setProfileImage();
         setupFirebaseAuth();
 
         //back arrow for navigating back to "ProfileActivity"
@@ -205,8 +205,8 @@ public class EditProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: changing profile photo");
-                Intent intent = new Intent(getActivity(), HomeActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //268435456
+                Intent intent = new Intent(getActivity(), AddActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 getActivity().startActivity(intent);
                 getActivity().finish();
             }
