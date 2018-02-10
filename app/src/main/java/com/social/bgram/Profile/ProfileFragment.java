@@ -95,7 +95,7 @@ public class ProfileFragment extends Fragment {
 
 
                 /*
-             *********************** Move To Edit Profile (Resiving) ************************
+             *********************** Move To Edit Profile (Sending To Edit Profile Fragment) ************************
              */
 
         TextView editProfile = (TextView) view.findViewById(R.id.textEditProfile);

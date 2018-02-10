@@ -7,24 +7,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
-import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
-import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
-import com.social.bgram.Add.AddActivity;
-import com.social.bgram.Home.HomeActivity;
-import com.social.bgram.Notification.NotificationActivity;
 import com.social.bgram.R;
-import com.social.bgram.Search.SearchActivity;
+
 
 public class ProfileActivity extends AppCompatActivity {
 

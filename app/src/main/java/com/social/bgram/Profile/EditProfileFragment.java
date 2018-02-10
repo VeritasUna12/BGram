@@ -48,7 +48,7 @@ public class EditProfileFragment extends Fragment {
     private String userID;
 
 
-    //EditProfile Fragment widgets
+    // EditProfile Fragment Widgets
     private EditText mDisplayName, mUsername, mWebsite, mDescription, mEmail, mPhoneNumber;
     private TextView mChangeProfilePhoto;
     private CircleImageView mProfilePhoto;
@@ -62,6 +62,7 @@ public class EditProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_edit_profile, container, false);
+
         mProfilePhoto = (CircleImageView) view.findViewById(R.id.profile_photo);
         mDisplayName = (EditText) view.findViewById(R.id.display_name);
         mUsername = (EditText) view.findViewById(R.id.username);
@@ -70,6 +71,7 @@ public class EditProfileFragment extends Fragment {
         mEmail = (EditText) view.findViewById(R.id.email);
         mPhoneNumber = (EditText) view.findViewById(R.id.phoneNumber);
         mChangeProfilePhoto = (TextView) view.findViewById(R.id.changeProfilePhoto);
+
         mFirebaseMethods = new FirebaseMethods(getActivity());
 
 
@@ -86,7 +88,7 @@ public class EditProfileFragment extends Fragment {
         });
 
         /*
-         ****************** when click ok , data in wedgits saving in database *********************
+         ************** when click ok , data in wedgits saving changes in database ****************
          */
         ImageView checkmark = (ImageView) view.findViewById(R.id.saveChanges);
         checkmark.setOnClickListener(new View.OnClickListener() {
@@ -121,7 +123,6 @@ public class EditProfileFragment extends Fragment {
 
             checkIfUsernameExists(username);
         }
-
 
          // change the rest of the settings that do not require uniqueness
 

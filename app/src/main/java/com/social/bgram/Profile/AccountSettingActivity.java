@@ -84,9 +84,9 @@ public class AccountSettingActivity extends AppCompatActivity {
         });
     }
 
-         /*
-         *********************** To Move To Edit Profile (Sending) **************************
-         */
+ /*
+ ************* To Move To Edit Profile (Received Incoming Intent From Profile Activity) ************
+ */
 
     private void getIncomingIntent(){
         Intent intent = getIntent();

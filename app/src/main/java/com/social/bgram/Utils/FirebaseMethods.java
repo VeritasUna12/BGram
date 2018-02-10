@@ -68,13 +68,9 @@ public class FirebaseMethods {
                 .setValue(username);
     }
 
-    /**
-     * Update 'user_account_settings' node for the current user
-     * @param displayName
-     * @param website
-     * @param description
-     * @param phoneNumber
-     */
+
+     // Update 'user_account_settings' Filed for the current user
+
     public void updateUserAccountSettings(String displayName, String website, String description, long phoneNumber){
 
         Log.d(TAG, "updateUserAccountSettings: updating user account settings.");
@@ -154,15 +150,9 @@ public class FirebaseMethods {
      ******************************** Add Information About New User *******************************
      */
 
-    /**
-     * Add information to the users nodes
-     * Add information to the user_account_settings node
-     * @param email
-     * @param username
-     * @param description
-     * @param website
-     * @param profile_photo
-     */
+      /*Add information to the users Filed
+      Add information to the user_account_settings Filed*/
+
     public void addNewUser(String email, String username, String description, String website, String profile_photo){
 
         User user = new User( userID,  1,  email,  StringManipulation.condenseUsername(username) );
@@ -191,13 +181,13 @@ public class FirebaseMethods {
     }
 
     /*
-     ********************** retrieve user information from the database ****************************
+     ********************** Retrieve user information from the database ****************************
      */
 
-    /**
-     * Retrieves the account settings for teh user currently logged in
-     * Database: user_acount_Settings filed
-     */
+
+      /*Retrieves the account settings for teh user currently logged in
+      Database: user_acount_Settings filed*/
+
     public UserSettings getUserSettings(DataSnapshot dataSnapshot){
         Log.d(TAG, "getUserAccountSettings: retrieving user account settings from firebase.");
 
