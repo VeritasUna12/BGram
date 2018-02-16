@@ -23,6 +23,7 @@
 
         <activity android:name="com.social.bgram.Search.SearchActivity"></activity>
         <activity android:name="com.social.bgram.Add.AddActivity"></activity>
+        <activity android:name="com.social.bgram.Add.NextActivity"></activity>
         <activity android:name="com.social.bgram.Notification.NotificationActivity"></activity>
         <activity android:name="com.social.bgram.Profile.ProfileActivity"></activity>
         <activity android:name="com.social.bgram.Profile.AccountSettingActivity"></activity>

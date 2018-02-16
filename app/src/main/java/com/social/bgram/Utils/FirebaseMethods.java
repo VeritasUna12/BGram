@@ -1,6 +1,7 @@
 package com.social.bgram.Utils;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
@@ -31,6 +32,7 @@ public class FirebaseMethods {
 
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mReference;
+    private StorageReference mStorageReference;
 
     private String userID;
 
@@ -41,11 +43,42 @@ public class FirebaseMethods {
         mAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mReference = mFirebaseDatabase.getReference();
+        mStorageReference = FirebaseStorage.getInstance().getReference();
         mContext = context;
 
         if (mAuth.getCurrentUser() != null) {
             userID = mAuth.getCurrentUser().getUid();
         }
+    }
+
+    public void uploadNewPhoto(String photoType, final String caption,final int count, final String imgUrl, Bitmap bm) {
+
+        FilePaths filePaths = new FilePaths();
+        //case new photo
+        if (photoType.equals(mContext.getString(R.string.new_photo))) {
+            Log.d(TAG, "uploadNewPhoto: uploading New photo.");
+
+            String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            StorageReference storageReference = mStorageReference
+                    .child(filePaths.FIREBASE_IMAGE_STORAGE + "/" + user_id + "/photo" + (count + 1));
+        }
+
+        //case new profile photo
+        else if (photoType.equals(mContext.getString(R.string.profile_photo))) {
+            Log.d(TAG, "uploadNewPhoto: uploading new PROFILE photo");
+
+        }
+    }
+
+    public int getImageCount(DataSnapshot dataSnapshot){
+        int count = 0;
+        for(DataSnapshot ds: dataSnapshot
+                .child(mContext.getString(R.string.dbname_user_photos))
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .getChildren()){
+            count++;
+        }
+        return count;
     }
 
     /*
@@ -285,4 +318,3 @@ public class FirebaseMethods {
     }
 
 }
-

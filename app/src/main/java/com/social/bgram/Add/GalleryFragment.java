@@ -16,10 +16,12 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+import com.social.bgram.Profile.AccountSettingActivity;
 import com.social.bgram.R;
 import com.social.bgram.Utils.FilePaths;
 import com.social.bgram.Utils.FileSearch;
@@ -70,26 +72,26 @@ public class GalleryFragment extends Fragment {
         });
 
 
-       /* TextView nextScreen = (TextView) view.findViewById(R.id.tvNext);
+        TextView nextScreen = (TextView) view.findViewById(R.id.tvNext);
         nextScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: navigating to the final share screen.");
 
-                if(isRootTask()){
-                    Intent intent = new Intent(getActivity(), NextActivity.class);
-                    intent.putExtra(getString(R.string.selected_image), mSelectedImage);
-                    startActivity(intent);
-                }else{
-                    Intent intent = new Intent(getActivity(), AccountSettingsActivity.class);
+                /*if(isRootTask()){*/
+                Intent intent = new Intent(getActivity(), NextActivity.class);
+                intent.putExtra(getString(R.string.selected_image), mSelectedImage);
+                startActivity(intent);
+                /*}else{
+                    Intent intent = new Intent(getActivity(), AccountSettingActivity.class);
                     intent.putExtra(getString(R.string.selected_image), mSelectedImage);
                     intent.putExtra(getString(R.string.return_to_fragment), getString(R.string.edit_profile_fragment));
                     startActivity(intent);
                     getActivity().finish();
-                }
+                }*/
 
             }
-        });*/
+        });
 
         init();
 
@@ -161,10 +163,14 @@ public class GalleryFragment extends Fragment {
         try{
             if (imgURLs != null && imgURLs.size()>=1) {
                 setImage(imgURLs.get(0), galleryImage, mAppend);
+
                 mSelectedImage = imgURLs.get(0);
             }
         }catch (ArrayIndexOutOfBoundsException e){
             Log.e(TAG, "setupGridView: ArrayIndexOutOfBoundsException: " +e.getMessage() );
+//            getParentFragment();
+            /*Toast.makeText(getActivity(),"Gallery is Empty , Go to Camera",
+                    Toast.LENGTH_SHORT).show();*/
         }
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -173,6 +179,7 @@ public class GalleryFragment extends Fragment {
                 Log.d(TAG, "onItemClick: selected an image: " + imgURLs.get(position));
 
                 setImage(imgURLs.get(position), galleryImage, mAppend);
+
                 mSelectedImage = imgURLs.get(position);
             }
         });

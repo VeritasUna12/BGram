@@ -81,7 +81,7 @@ public class AddActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(mViewPager);
 
         tabLayout.getTabAt(0).setText(getString(R.string.gallery));
-        tabLayout.getTabAt(1).setText(getString(R.string.photo));
+        tabLayout.getTabAt(1).setText(getString(R.string.camera));
 
     }
 
