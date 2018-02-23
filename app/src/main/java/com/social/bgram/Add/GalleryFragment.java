@@ -78,17 +78,17 @@ public class GalleryFragment extends Fragment {
             public void onClick(View v) {
                 Log.d(TAG, "onClick: navigating to the final share screen.");
 
-                /*if(isRootTask()){*/
+                if(isRootTask()){
                 Intent intent = new Intent(getActivity(), NextActivity.class);
                 intent.putExtra(getString(R.string.selected_image), mSelectedImage);
                 startActivity(intent);
-                /*}else{
+                }else{
                     Intent intent = new Intent(getActivity(), AccountSettingActivity.class);
                     intent.putExtra(getString(R.string.selected_image), mSelectedImage);
                     intent.putExtra(getString(R.string.return_to_fragment), getString(R.string.edit_profile_fragment));
                     startActivity(intent);
                     getActivity().finish();
-                }*/
+                }
 
             }
         });
@@ -98,14 +98,14 @@ public class GalleryFragment extends Fragment {
         return view;
     }
 
-    /*private boolean isRootTask(){
+    private boolean isRootTask(){
         if(((AddActivity)getActivity()).getTask() == 0){
             return true;
         }
         else{
             return false;
         }
-    }*/
+    }
 
     private void init(){
         FilePaths filePaths = new FilePaths();

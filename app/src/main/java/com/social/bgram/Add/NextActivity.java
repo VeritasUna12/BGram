@@ -84,7 +84,6 @@ public class NextActivity extends AppCompatActivity {
                     mFirebaseMethods.uploadNewPhoto(getString(R.string.new_photo), caption, imageCount, null,bitmap);
                 }
 
-
             }
         });
 
@@ -124,11 +123,11 @@ public class NextActivity extends AppCompatActivity {
             Log.d(TAG, "setImage: got new image url: " + imgUrl);
             UniversalImageLoader.setImage(imgUrl, image, null, mAppend);
         }
-        /*else if(intent.hasExtra(getString(R.string.selected_bitmap))){
+        else if(intent.hasExtra(getString(R.string.selected_bitmap))){
             bitmap = (Bitmap) intent.getParcelableExtra(getString(R.string.selected_bitmap));
             Log.d(TAG, "setImage: got new bitmap");
             image.setImageBitmap(bitmap);
-        }*/
+        }
     }
 
      /*

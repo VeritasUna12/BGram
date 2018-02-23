@@ -99,7 +99,11 @@ public class AddActivity extends AppCompatActivity {
         );
     }
 
+    public int getTask() {
+        Log.d(TAG, "getTask: TASK: " + getIntent().getFlags());
+        return getIntent().getFlags();
 
+    }
             /*
             ******************** Check permissions in all of array *********************
             */

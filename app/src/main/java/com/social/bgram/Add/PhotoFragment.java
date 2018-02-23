@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.social.bgram.Profile.AccountSettingActivity;
 import com.social.bgram.R;
 import com.social.bgram.Utils.Permissions;
 
@@ -55,14 +56,14 @@ public class PhotoFragment extends Fragment {
         return view;
     }
 
-  /*  private boolean isRootTask(){
-        if(((ShareActivity)getActivity()).getTask() == 0){
+    private boolean isRootTask(){
+        if(((AddActivity)getActivity()).getTask() == 0){
             return true;
         }
         else{
             return false;
         }
-    }*/
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -72,7 +73,7 @@ public class PhotoFragment extends Fragment {
             Log.d(TAG, "onActivityResult: done taking a photo.");
             Log.d(TAG, "onActivityResult: attempting to navigate to final share screen.");
 
-            /*Bitmap bitmap;
+            Bitmap bitmap;
             bitmap = (Bitmap) data.getExtras().get("data");
 
             if(isRootTask()){
@@ -87,7 +88,7 @@ public class PhotoFragment extends Fragment {
             }else{
                try{
                    Log.d(TAG, "onActivityResult: received new bitmap from camera: " + bitmap);
-                   Intent intent = new Intent(getActivity(), AccountSettingsActivity.class);
+                   Intent intent = new Intent(getActivity(), AccountSettingActivity.class);
                    intent.putExtra(getString(R.string.selected_bitmap), bitmap);
                    intent.putExtra(getString(R.string.return_to_fragment), getString(R.string.edit_profile_fragment));
                    startActivity(intent);
@@ -95,7 +96,7 @@ public class PhotoFragment extends Fragment {
                }catch (NullPointerException e){
                    Log.d(TAG, "onActivityResult: NullPointerException: " + e.getMessage());
                }
-            }*/
+            }
 
         }
     }
