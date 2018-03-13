@@ -14,9 +14,12 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.social.bgram.R;
+import com.social.bgram.ViewPostFragment;
+import com.social.bgram.models.Photo;
 
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity implements
+        ProfileFragment.OnGridImageSelectedListener {
 
     private static final String TAG = "ProfileActivity";
     private Context mContext = ProfileActivity.this;
@@ -34,6 +37,24 @@ public class ProfileActivity extends AppCompatActivity {
 //        mProgressBar.setVisibility(View.GONE);
 
         init();
+
+    }
+
+    @Override
+    public void onGridImageSelected(Photo photo, int activityNumber) {
+        Log.d(TAG, "onGridImageSelected: selected an image gridview: " + photo.toString());
+
+        ViewPostFragment fragment = new ViewPostFragment();
+        Bundle args = new Bundle();
+        args.putParcelable(getString(R.string.camera), photo);
+        args.putInt(getString(R.string.activity_number), activityNumber);
+
+        fragment.setArguments(args);
+
+        android.support.v4.app.FragmentTransaction transaction  = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(getString(R.string.view_post_fragment));
+        transaction.commit();
 
     }
 

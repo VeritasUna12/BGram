@@ -7,7 +7,7 @@ import org.w3c.dom.Comment;
 
 import java.util.List;
 
-public class Photo/* implements Parcelable*/ {
+public class Photo implements Parcelable {
 
     private String caption;
     private String date_created;
@@ -34,7 +34,7 @@ public class Photo/* implements Parcelable*/ {
         this.comments = comments;*/
     }
 
-    /*protected Photo(Parcel in) {
+    protected Photo(Parcel in) {
         caption = in.readString();
         date_created = in.readString();
         image_path = in.readString();
@@ -68,7 +68,7 @@ public class Photo/* implements Parcelable*/ {
         public Photo[] newArray(int size) {
             return new Photo[size];
         }
-    };*/
+    };
 
     /*public List<Comment> getComments() {
         return comments;

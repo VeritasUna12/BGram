@@ -53,6 +53,9 @@ dependencies {
     //CircularFloatingActionMenu
     compile 'com.oguzdev:CircularFloatingActionMenu:1.0.2'
 
+    //LikeButton
+    compile 'com.github.jd-alexander:LikeButton:0.2.3'
+
 }
 
 // Add firebase database

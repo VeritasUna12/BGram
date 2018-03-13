@@ -57,7 +57,13 @@ public class ProfileFragment extends Fragment {
 
     private static final String TAG = "ProfileFragment";
 
+    public interface OnGridImageSelectedListener{
+        void onGridImageSelected(Photo photo, int activityNumber);
+    }
+    OnGridImageSelectedListener mOnGridImageSelectedListener;
+
     private static final int NUM_GRID_COLUMNS = 3;
+    private static final int ACTIVITY_NUM = 4;
 
     //Firebase : Declare an instance of Firebase
     private FirebaseAuth mAuth;
@@ -121,6 +127,17 @@ public class ProfileFragment extends Fragment {
         });
 
         return view;
+    }
+
+
+    @Override
+    public void onAttach(Context context) {
+        try{
+            mOnGridImageSelectedListener = (OnGridImageSelectedListener) getActivity();
+        }catch (ClassCastException e){
+            Log.e(TAG, "onAttach: ClassCastException: " + e.getMessage() );
+        }
+        super.onAttach(context);
     }
 
              /*
@@ -194,12 +211,12 @@ public class ProfileFragment extends Fragment {
                         "", imgUrls);
                 gridView.setAdapter(adapter);
 
-                /*gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         mOnGridImageSelectedListener.onGridImageSelected(photos.get(position), ACTIVITY_NUM);
                     }
-                });*/
+                });
             }
 
             @Override
