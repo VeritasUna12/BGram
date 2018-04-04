@@ -10,8 +10,8 @@ public class FileSearch {
  */
 
     public static ArrayList<String> getDirectoryPaths(String directory){
-        ArrayList<String> pathArray = new ArrayList<>();
 
+        ArrayList<String> pathArray = new ArrayList<>();
         File file = new File(directory);
         File[] listfiles = file.listFiles();
         for(int i = 0; i < listfiles.length; i++){

@@ -91,20 +91,23 @@ public class AccountSettingActivity extends AppCompatActivity {
     private void getIncomingIntent(){
 
             Intent intent = getIntent();
-
+            // if the selected_image coming from gallery or camera
             if(intent.hasExtra(getString(R.string.selected_image))
                     || intent.hasExtra(getString(R.string.selected_bitmap))){
 
                 //if there is an imageUrl attached as an extra, then it was chosen from the gallery/photo fragment
                 Log.d(TAG, "getIncomingIntent: New incoming imgUrl");
-                if(intent.getStringExtra(getString(R.string.return_to_fragment)).equals(getString(R.string.edit_profile_fragment))){
 
+                // if the selected_image coming from gallery or camera when click change photo
+                if(intent.getStringExtra(getString(R.string.return_to_fragment)).equals(getString(R.string.edit_profile_fragment))){
+                    // if the selected_image coming from gallery
                     if(intent.hasExtra(getString(R.string.selected_image))){
                         //set the new profile picture
                         FirebaseMethods firebaseMethods = new FirebaseMethods(AccountSettingActivity.this);
                         firebaseMethods.uploadNewPhoto(getString(R.string.profile_photo), null, 0,
                                 intent.getStringExtra(getString(R.string.selected_image)), null);
                     }
+                    // if the selected_image coming from camera
                     else if(intent.hasExtra(getString(R.string.selected_bitmap))){
                         //set the new profile picture
                         FirebaseMethods firebaseMethods = new FirebaseMethods(AccountSettingActivity.this);

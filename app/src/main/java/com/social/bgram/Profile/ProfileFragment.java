@@ -41,6 +41,8 @@ import com.social.bgram.Search.SearchActivity;
 import com.social.bgram.Utils.FirebaseMethods;
 import com.social.bgram.Utils.GridImageAdapter;
 import com.social.bgram.Utils.UniversalImageLoader;
+import com.social.bgram.models.Comment;
+import com.social.bgram.models.Like;
 import com.social.bgram.models.Photo;
 import com.social.bgram.models.User;
 import com.social.bgram.models.UserAccountSettings;
@@ -158,11 +160,11 @@ public class ProfileFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for ( DataSnapshot singleSnapshot :  dataSnapshot.getChildren()){
 
-                    photos.add(singleSnapshot.getValue(Photo.class));
-                    /*Photo photo = new Photo();
-                    Map<String, Object> objectMap = (HashMap<String, Object>) singleSnapshot.getValue();*/
+                    /*photos.add(singleSnapshot.getValue(Photo.class));*/
+                    Photo photo = new Photo();
+                    Map<String, Object> objectMap = (HashMap<String, Object>) singleSnapshot.getValue();
 
-                    /*try {
+                    try {
                         photo.setCaption(objectMap.get(getString(R.string.field_caption)).toString());
                         photo.setTags(objectMap.get(getString(R.string.field_tags)).toString());
                         photo.setPhoto_id(objectMap.get(getString(R.string.field_photo_id)).toString());
@@ -170,7 +172,7 @@ public class ProfileFragment extends Fragment {
                         photo.setDate_created(objectMap.get(getString(R.string.field_date_created)).toString());
                         photo.setImage_path(objectMap.get(getString(R.string.field_image_path)).toString());
 
-                        ArrayList<Comment> comments = new ArrayList<Comment>();
+                        /*ArrayList<Comment> comments = new ArrayList<Comment>();
                         for (DataSnapshot dSnapshot : singleSnapshot
                                 .child(getString(R.string.field_comments)).getChildren()) {
                             Comment comment = new Comment();
@@ -180,7 +182,7 @@ public class ProfileFragment extends Fragment {
                             comments.add(comment);
                         }
 
-                        photo.setComments(comments);
+                        photo.setComments(comments);*/
 
                         List<Like> likesList = new ArrayList<Like>();
                         for (DataSnapshot dSnapshot : singleSnapshot
@@ -193,7 +195,7 @@ public class ProfileFragment extends Fragment {
                         photos.add(photo);
                     }catch(NullPointerException e){
                         Log.e(TAG, "onDataChange: NullPointerException: " + e.getMessage() );
-                    }*/
+                    }
                 }
 
                 //setup our image grid

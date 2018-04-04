@@ -74,6 +74,7 @@ public class FirebaseMethods {
         if (photoType.equals(mContext.getString(R.string.new_photo))) {
             Log.d(TAG, "uploadNewPhoto: uploading New photo.");
 
+            //location where the image stored
             String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
             StorageReference storageReference = mStorageReference
                     .child(filePaths.FIREBASE_IMAGE_STORAGE + "/" + user_id + "/photo" + (count + 1));// photo1 photo2 photo3

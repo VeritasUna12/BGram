@@ -42,9 +42,12 @@ public class PhotoFragment extends Fragment {
                 if(((AddActivity)getActivity()).getCurrentTabNumber() == PHOTO_FRAGMENT_NUM){
                     if(((AddActivity)getActivity()).checkPermissions(Permissions.CAMERA_PERMISSION[0])){
                         Log.d(TAG, "onClick: starting camera");
+                        //Camera Intent
                         Intent CameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                         startActivityForResult(CameraIntent, CAMERA_REQUEST_CODE);
-                    }else{
+                    }
+                    //launching AddActivity
+                    else{
                         Intent intent = new Intent(getActivity(), AddActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);

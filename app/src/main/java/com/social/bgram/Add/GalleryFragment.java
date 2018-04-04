@@ -62,6 +62,7 @@ public class GalleryFragment extends Fragment {
         directories = new ArrayList<>();
         Log.d(TAG, "onCreateView: started.");
 
+        // Close the share activity
         ImageView shareClose = (ImageView) view.findViewById(R.id.ivCancel);
         shareClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +72,7 @@ public class GalleryFragment extends Fragment {
             }
         });
 
-
+        // navigating to the nextScreen activity
         TextView nextScreen = (TextView) view.findViewById(R.id.tvNext);
         nextScreen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,6 +125,7 @@ public class GalleryFragment extends Fragment {
             directoryNames.add(string);
         }
 
+        //all directory in PICTURES and CAMERA folders show in spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_spinner_item, directoryNames);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

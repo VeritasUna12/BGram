@@ -69,7 +69,7 @@ public class AddActivity extends AppCompatActivity {
     **************** setup viewpager for manager the Gallery and Photo Fragments *******************
     */
 
-    private void setupViewPager(){
+    private void setupViewPager() {
         SectionPagerAdapter adapter =  new SectionPagerAdapter(getSupportFragmentManager());
         adapter.AddFragment(new GalleryFragment());
         adapter.AddFragment(new PhotoFragment());

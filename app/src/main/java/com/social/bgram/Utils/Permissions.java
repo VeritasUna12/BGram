@@ -2,9 +2,6 @@ package com.social.bgram.Utils;
 
 import android.Manifest;
 
-/**
- * Created by Ahmed R. Abdo on 2/6/2018.
- */
 
 public class Permissions {
 
